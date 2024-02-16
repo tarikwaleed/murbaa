@@ -1143,19 +1143,45 @@
 								<input type="text" lang="en" id="complianceWithTheSaudiBuildingCode" :value="api_land.complianceWithTheSaudiBuildingCode" class="form-control border border-primary rounded" placeholder="مطابقة كود البناء السعودي" readonly />
 							</div>
 						</div>
-						<!-- Label for property utilities -->
+
 						<div class="row mt-2">
 							<div class="col-sm">
 								<label class="font-weight-bold">خدمات العقار</label>
 							</div>
 						</div>
 
-						<!-- List of property utilities -->
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
 								<ul>
-									<!-- Loop through propertyUtilities array -->
 									<li v-for="utility in api_land.propertyUtilities">{{ utility }}</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm">
+								<label class="font-weight-bold">القنوات</label>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<ul>
+									<li v-for="channel in api_land.channels">{{ channel }}</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm">
+								<label class="font-weight-bold">استخدام العقار</label>
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<ul>
+									<li v-for="usage in api_land.propertyUsages">{{ usage }}</li>
 								</ul>
 							</div>
 						</div>
