@@ -1111,6 +1111,38 @@
 							</div>
 						</div>
 
+						<!-- Additional rows for the new pieces of information -->
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="propertyFace" class="">واجهة العقار</label>
+								<input type="text" lang="en" id="propertyFace" :value="api_land.propertyFace" class="form-control border border-primary rounded" placeholder="واجهة العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="planNumber" class="">رقم المخطط</label>
+								<input type="text" lang="en" id="planNumber" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="رقم الخطة" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="obligationsOnTheProperty" class="">الالتزامات على العقار</label>
+								<input type="text" lang="en" id="obligationsOnTheProperty" :value="api_land.obligationsOnTheProperty" class="form-control border border-primary rounded" placeholder="الالتزامات على العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="guaranteesAndTheirDuration" class="">الضمانات ومدتها</label>
+								<input type="text" lang="en" id="guaranteesAndTheirDuration" :value="api_land.guaranteesAndTheirDuration" class="form-control border border-primary rounded" placeholder="الضمانات ومدتها" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="theBordersAndLengthsOfTheProperty" class="">الحدود والأطوال للعقار</label>
+								<input type="text" lang="en" id="theBordersAndLengthsOfTheProperty" :value="api_land.theBordersAndLengthsOfTheProperty" class="form-control border border-primary rounded" placeholder="الحدود والأطوال للعقار" readonly />
+							</div>
+						</div>
+
+						<!-- The rest of the code remains unchanged -->
+
 
 
 						<div class="row align-items-center">
