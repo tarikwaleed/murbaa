@@ -967,7 +967,7 @@
 								<input type="checkbox" id="isPawned" name="isPawned" :value="api_land.isPawned"  >
 							</div>
 						</div>
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_type" class="">العلاقة بالعقار</label>
 								<select name="new_relation" id="new_relation" class="form-control border border-primary rounded" @change="onChangeRelation($event)" >
@@ -980,8 +980,8 @@
 								<input type="file" name="new_delegate_file" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
 								<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
 							</div>
-						</div>
-						<div class="row mt-3">
+						</div> -->
+						<!-- <div class="row mt-3">
 							<div class="col-sm mb-3">
 								<label for="new_block" class="">المربع</label>
 								<input type="number" lang="en" name="new_block" id="new_block" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="المربع" required />
@@ -998,7 +998,26 @@
 								<input type="number" lang="en" step="any" id="new_space" :value="api_land.propertyArea" name="new_space" class="form-control border border-primary rounded" placeholder="المساحة" required />
 								<div class="d-none err_notification" id="valid_new_space">this field required</div>
 							</div>
+						</div> -->
+						<div class="row mt-3">
+							<div class="col-sm mb-3">
+								<label for="streetWidth" class="">عرض الشارع</label>
+								<input type="number" lang="en" id="streetWidth" :value="api_land.streetWidth" class="form-control border border-primary rounded" placeholder="عرض الشارع" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="propertyArea" class="">المساحة</label>
+								<input type="number" lang="en" step="any" id="propertyArea" :value="api_land.propertyArea" class="form-control border border-primary rounded" placeholder="المساحة" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="propertyPrice" class="">سعر العقار</label>
+								<input type="number" lang="en" step="any" id="propertyPrice" :value="api_land.propertyPrice" class="form-control border border-primary rounded" placeholder="سعر العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="propertyTotalPrice" class="">السعر الإجمالي</label>
+								<input type="number" lang="en" step="any" id="propertyTotalPrice" :value="api_land.propertyTotalPrice" class="form-control border border-primary rounded" placeholder="السعر الإجمالي" readonly />
+							</div>
 						</div>
+
 						<div class="row align-items-center">
 							<div class="col-sm mb-3">
 								<img id="new_land_img" src="<?php echo URL;?>public/IMG/land/default.png" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">

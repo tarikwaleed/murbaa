@@ -1,0 +1,78 @@
+{
+  "Header": {
+    "ResTime": "2024-02-13T11:55:17.422Z",
+    "ChId": "realestateportals",
+    "RefId": "1",
+    "ReqID": "d88b9b8065cb58a504cb8d85",
+    "Status": {
+      "Code": 200,
+      "Description": "OK"
+    }
+  },
+  "Body": {
+    "result": {
+      "isValid": true,
+      "advertisement": {
+        "advertiserId": "1055344244",
+        "adLicenseNumber": "7100011343",
+        "deedNumber": 541704007490,
+        "advertiserName": "سعيد صياح سلمي الجهني",
+        "phoneNumber": "0544403002",
+        "brokerageAndMarketingLicenseNumber": "1100004444",
+        "isConstrained": false,
+        "isPawned": false,
+        "streetWidth": 15,
+        "propertyArea": 455,
+        "propertyPrice": 3250,
+        "propertyTotalPrice": null,
+        "numberOfRooms": 3,
+        "propertyType": "عمارة",
+        "propertyAge": "جديد",
+        "advertisementType": "إيجار",
+        "location": {
+          "region": "منطقة المدينة المنورة",
+          "regionCode": "3",
+          "city": "ينبع",
+          "cityCode": "19269",
+          "district": "الفلاح",
+          "districtCode": "3472",
+          "street": "",
+          "postalCode": "46517",
+          "buildingNumber": "2960",
+          "additionalNumber": "7544",
+          "longitude": "24",
+          "latitude": "24"
+        },
+        "propertyFace": "جنوبية غربية",
+        "planNumber": "ها13",
+        "obligationsOnTheProperty": "لايوجد",
+        "guaranteesAndTheirDuration": "",
+        "theBordersAndLengthsOfTheProperty": "",
+        "complianceWithTheSaudiBuildingCode": null,
+        "channels": [
+          "منصة مرخصة",
+          "منصات التواصل الإجتماعي",
+          "لوحة اعلانية",
+          "أخرى",
+          "الإذاعة"
+        ],
+        "propertyUsages": [
+          "سكني"
+        ],
+        "propertyUtilities": [
+          "كهرباء",
+          "مياه",
+          "صرف صحي"
+        ],
+        "creationDate": "26/07/2023",
+        "endDate": "16/07/2024",
+        "qrCodeUrl": "https://eservicesredp.rega.gov.sa/public/IndividualBroker/ElanDetails/08db8e16-e705-4810-8615-3f82990c6125"
+      }
+    },
+    "targetUrl": null,
+    "success": true,
+    "error": null,
+    "unAuthorizedRequest": false,
+    "__abp": true
+  }
+}
