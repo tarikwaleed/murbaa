@@ -2,6 +2,7 @@
 	button.page-link {
 		display: inline-block;
 	}
+
 	.map_area {
 		height: 200px;
 		width: 100%;
@@ -19,7 +20,7 @@
 					</div>
 				</div>
 			</div-->
-			<form class="filter-form" id="land_search" v-on:submit.prevent="onSubmitSearch" method="POST" action="<?php echo URL?>my_land/">
+			<form class="filter-form" id="land_search" v-on:submit.prevent="onSubmitSearch" method="POST" action="<?php echo URL ?>my_land/">
 				<input type="hidden" name="paging_curr_no" id="paging_curr_no" value="1" />
 				<input type="hidden" name="limit" id="paging_length" value="<?php echo session::get("PAGING") ?>" />
 				<div class="">
@@ -27,41 +28,41 @@
 					<div class="row">
 						<div class="col-sm mb-3">
 							<select name="city" id="city" class="form-control" @change="onChangeCity($event)">
-								<option value="" selected disabled >اختر المدينة</option>
-								<option  v-for="(x,id) in cities" v-bind:data-no="id" v-bind:value="x.ID">{{x.NAME}}</option>
+								<option value="" selected disabled>اختر المدينة</option>
+								<option v-for="(x,id) in cities" v-bind:data-no="id" v-bind:value="x.ID">{{x.NAME}}</option>
 							</select>
-						</div>	
+						</div>
 						<div class="col-sm mb-3">
 							<select name="neighborhood" id="neighborhood" class="form-control">
-								<option  value="" selected>اختر الحي</option>
-								<option  v-for="x in neighborhood" v-bind:value="x.ID">{{x.NAME}}</option>
+								<option value="" selected>اختر الحي</option>
+								<option v-for="x in neighborhood" v-bind:value="x.ID">{{x.NAME}}</option>
 							</select>
-						</div>	
+						</div>
 						<div class="col-sm mb-3">
-							<input type="number" name="block" class="form-control" placeholder="المربع"/>
+							<input type="number" name="block" class="form-control" placeholder="المربع" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm mb-3">
 							<select name="adv" id="adv" class="form-control">
-								<option  value="" selected>اختر النوع</option>
-								<option  v-for="(x,id) in adv" v-bind:value="id">{{x}}</option>
+								<option value="" selected>اختر النوع</option>
+								<option v-for="(x,id) in adv" v-bind:value="id">{{x}}</option>
 							</select>
 						</div>
 						<div class="col-sm mb-3">
 							<select name="types" id="types" class="form-control">
-								<option  value="" selected>اختر النوع</option>
-								<option  v-for="(x,id) in types" v-bind:value="x.ID">{{x.NAME}}</option>
+								<option value="" selected>اختر النوع</option>
+								<option v-for="(x,id) in types" v-bind:value="x.ID">{{x.NAME}}</option>
 							</select>
 						</div>
 						<div class="col-sm mb-3">
-							<input name="rooms" type="number" class="form-control" placeholder="عدد الغرف"/>
+							<input name="rooms" type="number" class="form-control" placeholder="عدد الغرف" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm mb-3 small">
-							<span>المساحة الإعلانية المتاحة: <span v-if="(config.AREA - config.ALL_LANDS) > 0">{{config.AREA - config.ALL_LANDS}}</span><span v-else="">0</span> </span> <br/>
-							<span>المساحة الإعلانية  VIP المتاحة: <span v-if="(config.VIP - config.CURR_VIP) > 0">{{config.VIP - config.CURR_VIP}}</span><span v-else="">0</span>  </span>
+							<span>المساحة الإعلانية المتاحة: <span v-if="(config.AREA - config.ALL_LANDS) > 0">{{config.AREA - config.ALL_LANDS}}</span><span v-else="">0</span> </span> <br />
+							<span>المساحة الإعلانية VIP المتاحة: <span v-if="(config.VIP - config.CURR_VIP) > 0">{{config.VIP - config.CURR_VIP}}</span><span v-else="">0</span> </span>
 						</div>
 						<div class="col-sm mb-3">
 							<button type="submit" id="search" class="btn btn-block btn-primary">بحـــث <i class="fa fa-search"></i></button>
@@ -75,7 +76,7 @@
 						<div class="col-sm mb-3">
 							<button type="button" v-on:click.prevent="new_land('REQ')" class="btn btn-block btn-success" data-toggle="modal" data-target="#new_request">إضافة طلب <i class="fa fa-plus"></i></button>
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="more-option">
@@ -103,39 +104,39 @@
 											<div class="row mb-3">
 												<label>الغرف</label>
 												<div class="col">
-													<input name="rooms_min" class="form-control" type="number" /> 
+													<input name="rooms_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="rooms_max" class="form-control" type="number"/>
+													<input name="rooms_max" class="form-control" type="number" />
 												</div>
 											</div>
-											<div class="row mb-3">				
+											<div class="row mb-3">
 												<label>السعر</label>
 												<div class="col">
-													<input name="price_min" class="form-control" type="number" /> 
+													<input name="price_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="price_max" class="form-control" type="number"/>
+													<input name="price_max" class="form-control" type="number" />
 												</div>
 											</div>
 										</div>
 										<div class="ml-column">
 											<div class="row mb-3">
-													<label>الحجم</label>												
+												<label>الحجم</label>
 												<div class="col">
-													<input name="size_min" class="form-control" type="number" /> 
+													<input name="size_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="size_max" class="form-control" type="number"/>
+													<input name="size_max" class="form-control" type="number" />
 												</div>
 											</div>
-											<div class="row mb-3">				
+											<div class="row mb-3">
 												<label>الطابق</label>
 												<div class="col">
-													<input name="floor_min" class="form-control" type="number"/>
+													<input name="floor_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="floor_max" class="form-control" type="number"/>				
+													<input name="floor_max" class="form-control" type="number" />
 												</div>
 											</div>
 										</div>
@@ -143,19 +144,19 @@
 											<div class="row mb-3">
 												<label class="">الحمامات</label>
 												<div class="col">
-													<input name="baths_min" class="form-control" type="number"/>
+													<input name="baths_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="baths_max" class="form-control" type="number"/>
+													<input name="baths_max" class="form-control" type="number" />
 												</div>
 											</div>
 											<div class="row mb-3">
 												<label class="">الشارع</label>
 												<div class="col">
-													<input name="road_min" class="form-control" type="number"/>
+													<input name="road_min" class="form-control" type="number" />
 												</div> -
 												<div class="col">
-													<input name="road_max" class="form-control" type="number"/>
+													<input name="road_max" class="form-control" type="number" />
 												</div>
 											</div>
 										</div>
@@ -169,28 +170,28 @@
 		</div>
 	</section>
 	<!-- Search Section End -->
-	
+
 	<!-- Property Section Begin -->
-	<section class="property-section latest-property-section pt-2 " >
+	<section class="property-section latest-property-section pt-2 ">
 		<div class="container ">
 			<div class="row property-filters ">
 				<div v-for="(x , land_index) in displayedPosts" class="col-md-12">
 					<div class="row property-item g-0 border bg-hover-light rounded-lg overflow-hidden flex-md-row mb-2 shadow-sm h-md-200 position-relative" style="height:auto">
 						<div class="col p-4 d-flex flex-column position-static">
 							<div class="pi-text">
-								<h5><a v-bind:href="'<?php echo URL?>dashboard/land/'+x.ID">{{types[x.TYPE].NAME}} <span v-if="x.NEI_NAME"> {{x.CIT_NAME}} / {{x.NEI_NAME}} / {{x.BLOCK}} </span></a></h5>
+								<h5><a v-bind:href="'<?php echo URL ?>dashboard/land/'+x.ID">{{types[x.TYPE].NAME}} <span v-if="x.NEI_NAME"> {{x.CIT_NAME}} / {{x.NEI_NAME}} / {{x.BLOCK}} </span></a></h5>
 								<div class="pt-price">{{x.PRICE}} <b class="pt-price" v-if="x.PRICE_M"> - {{x.PRICE_M}}</b> {{x.CURRENCY}}<span v-if="x.FOR != 'SALE' && x.FOR != 'INVEST'"> / {{statues[x.FOR].S_NAME}}</span></div>
-                                <!--div>
+								<!--div>
 									<a v-bind:href="x.LOCATION" target="_blank" v-if="x.LOCATION ">
 										<span class="fa fa-map-marker"></span> {{x.CIT_NAME}} / {{x.NEI_NAME}} / {{x.BLOCK}}
 									</a>
 								</div>
 								<!--div class="pi-date">{{x.ACT_DATE}}</div-->
 								<div class="pi-span d-none d-md-block d-lg-block">
-									<span><i class="fa fa-object-group"></i> {{x.SIZE}} <span v-if="x.SIZE_M"> - {{x.SIZE_M}}</span> م²</span> 
-									<span v-if="x.IS_RES"><i class="fa fa-bathtub"></i> {{x.BATHS}} <span v-if="x.BATHS_M"> - {{x.BATHS_M}}</span></span> 
-									<span v-if="x.IS_RES"><i class="fa fa-bed"></i> {{x.ROOMS}} <span v-if="x.ROOMS_M"> - {{x.ROOMS_M}}</span></span> 
-									<span v-if="x.IS_RES"><i class="fa fa-automobile"></i> {{x.CARS}}</span> 
+									<span><i class="fa fa-object-group"></i> {{x.SIZE}} <span v-if="x.SIZE_M"> - {{x.SIZE_M}}</span> م²</span>
+									<span v-if="x.IS_RES"><i class="fa fa-bathtub"></i> {{x.BATHS}} <span v-if="x.BATHS_M"> - {{x.BATHS_M}}</span></span>
+									<span v-if="x.IS_RES"><i class="fa fa-bed"></i> {{x.ROOMS}} <span v-if="x.ROOMS_M"> - {{x.ROOMS_M}}</span></span>
+									<span v-if="x.IS_RES"><i class="fa fa-automobile"></i> {{x.CARS}}</span>
 								</div>
 								<div class="pi-span d-none d-md-block d-lg-block">
 									<div class="dec"> {{x.DESC}} </div>
@@ -202,46 +203,52 @@
 									<button v-else="" v-on:click.prevent="active(land_index)" class='btn  btn-success mb-3 '>فك تجميد</button>
 									<button type="button" v-on:click="update_land(land_index)" class="btn btn-danger mb-3" data-toggle="modal" data-target="#del_land">حذف </button>
 									<span v-if="x.ADV == 'ADV'">
-										
-									<p v-if="x.PACKAGE_START">متميز من {{x.PACKAGE_START}} - {{x.PACKAGE_END}}</p>
-									<button v-else-if="config.VIP - config.CURR_VIP > 0" v-on:click.prevent="vip(land_index)" class='btn btn-success mb-3 '>عرض مميز</button>
-									<button v-else="" v-on:click.prevent="by_vip(land_index)" class='btn btn-success mb-3' data-toggle="modal" data-target="#vip_land" >شراء عرض مميز</button>
-									
-									<button v-if="config.PK_PRICE == 1 && x.BILL == 0" v-on:click.prevent="by_land(land_index)" class='btn btn-success mb-3' data-toggle="modal" data-target="#vip_land" >دفع عمولة الإعلان</button>
-									<form method="POST" action="<?php echo URL?>my_land">
-										<input type="hidden" name="refrech" value="refrech">
-										<input type="hidden" name="id_land"  v-bind:value="x.ID">
-										<button type="submit"  class="btn btn-success mb-3" >إعادة النشر </button>
+
+										<p v-if="x.PACKAGE_START">متميز من {{x.PACKAGE_START}} - {{x.PACKAGE_END}}</p>
+										<button v-else-if="config.VIP - config.CURR_VIP > 0" v-on:click.prevent="vip(land_index)" class='btn btn-success mb-3 '>عرض مميز</button>
+										<button v-else="" v-on:click.prevent="by_vip(land_index)" class='btn btn-success mb-3' data-toggle="modal" data-target="#vip_land">شراء عرض مميز</button>
+
+										<button v-if="config.PK_PRICE == 1 && x.BILL == 0" v-on:click.prevent="by_land(land_index)" class='btn btn-success mb-3' data-toggle="modal" data-target="#vip_land">دفع عمولة الإعلان</button>
+										<form method="POST" action="<?php echo URL ?>my_land">
+											<input type="hidden" name="refrech" value="refrech">
+											<input type="hidden" name="id_land" v-bind:value="x.ID">
+											<button type="submit" class="btn btn-success mb-3">إعادة النشر </button>
 										</form>
-                                    </span>
+									</span>
 								</div>
 							</div>
 						</div>
 						<div class="col-1 text-center d-none d-md-block d-lg-block"><br>
-							<span v-if="x.VISIT != 0"><h5><i class="fa fa-eye"></i></h5>{{x.VISIT}}</span>
-							<span v-else=""><h5><i class="fa fa-eye-slash"></i></h5><br/></span>
-							<span><h5><i class="fa fa-clock-o"></i></h5> 
-							{{x.DATE}}
+							<span v-if="x.VISIT != 0">
+								<h5><i class="fa fa-eye"></i></h5>{{x.VISIT}}
 							</span>
-							<span title="تحديث بيانات العقار يجدد تاريخ الانتهاء"><h5><i class="fa fa-hourglass-half"></i></h5> 
-							{{x.EXPERED}}
+							<span v-else="">
+								<h5><i class="fa fa-eye-slash"></i></h5><br />
+							</span>
+							<span>
+								<h5><i class="fa fa-clock-o"></i></h5>
+								{{x.DATE}}
+							</span>
+							<span title="تحديث بيانات العقار يجدد تاريخ الانتهاء">
+								<h5><i class="fa fa-hourglass-half"></i></h5>
+								{{x.EXPERED}}
 							</span>
 						</div>
 						<div class="col-auto">
-							<a v-bind:href="'<?php echo URL?>dashboard/land/'+x.ID" target="_blank">
+							<a v-bind:href="'<?php echo URL ?>dashboard/land/'+x.ID" target="_blank">
 								<div class="pi-pic set-bg rounded" v-bind:data-setbg="x.IMG">
-									<div v-bind:class = "get_type_color(x.FOR)"> {{statues[x.FOR].NAME}} - {{x.ADV_NAME}} </div>
-								    
+									<div v-bind:class="get_type_color(x.FOR)"> {{statues[x.FOR].NAME}} - {{x.ADV_NAME}} </div>
+
 								</div>
 							</a>
-						</div>	
+						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
-			
+
 			<!-- pagination -->
 			<nav aria-label="" data-aos="fade-up" id="paging">
-				<ul class="pagination justify-content-center mt-3" >
+				<ul class="pagination justify-content-center mt-3">
 					<li class="page-item">
 						<button type="button" class="page-link" v-if="current_page != 1" @click="current_page--"> السابق </button>
 					</li>
@@ -249,13 +256,13 @@
 						<button type="button" class="page-link" v-for="pageNumber in pages.slice(current_page-1, current_page+5)" @click="current_page = pageNumber"> {{pageNumber}} </button>
 					</li>
 					<li class="page-item">
-						<button type="button" class="page-link" v-if="current_page < pages.length" @click="current_page++" > التالى </button>
+						<button type="button" class="page-link" v-if="current_page < pages.length" @click="current_page++"> التالى </button>
 					</li>
 				</ul>
 			</nav>
 		</div>
 	</section>
-	
+
 	<!-- Property Section End -->
 	<style>
 		.floating-panel {
@@ -271,10 +278,9 @@
 			line-height: 30px;
 			padding-left: 10px;
 		}
-
 	</style>
-	
-    <div class="modal bd-example-modal-lg" id="new_error">
+
+	<div class="modal bd-example-modal-lg" id="new_error">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -283,7 +289,7 @@
 				</div>
 				<div class="modal-body">
 					<h4>للأسف لا يمكنك إضافة إعلان, عليك التحقق من بيانات الحساب</h4>
-					<br/>
+					<br />
 					<div v-if="config.AREA - config.ALL_LANDS <= 0"> لقد بلغ عدد الإعلانات الحد المسموح به, قم بترقية حسابك لكي تضيف إعلان جديد</div>
 				</div>
 				<div class="modal-footer">
@@ -292,11 +298,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Modal For add new Request -->
 	<div class="modal bd-example-modal-lg modal_with_form" id="new_request">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="new_request_form" method="post" action="<?php echo URL?>my_land/new_request" data-model="new_request" data-type="new_request">
+			<form class="row g-3 model_form" id="new_request_form" method="post" action="<?php echo URL ?>my_land/new_request" data-model="new_request" data-type="new_request">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="new_request_title"><i class="fa fa-plus"></i> إضافة طلب</h5>
@@ -307,7 +313,7 @@
 						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
 						<div class="floating-panel">
 							<input class="delete-circle" type="button" value="مسح دائرة" />
-							<input class="delete-rectangle" type="button" value="مسح مستطيل" >
+							<input class="delete-rectangle" type="button" value="مسح مستطيل">
 						</div>
 						<div id="request_map_area" class="map_area"></div>
 						<input type="hidden" id="request_map_data" name="request_map_data" value='' />
@@ -360,29 +366,29 @@
 									</div>
 								</div>
 								<div class="d-none err_notification" id="valid_request_price">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3">
 								<label for="request_currency" class="">العملة</label>
-								<select name="request_currency" id="request_currency" class="form-control" required >
-									<option  v-for="(x,id) in currency" v-bind:value="x">{{x}}</option>
+								<select name="request_currency" id="request_currency" class="form-control" required>
+									<option v-for="(x,id) in currency" v-bind:value="x">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_request_currency">this field required</div>
 							</div>
 							<div class="col-sm mb-3">
 								<label for="request_interface" class="">واجهة</label>
 								<select name="request_interface" id="request_interface" class="form-control">
-									<option value="" selected disabled >اختر الواجهة</option>
+									<option value="" selected disabled>اختر الواجهة</option>
 									<option v-for="(x,id) in interf" v-bind:value="id">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_request_interface">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 request_farm_area">
 								<label for="request_rooms" class="">عدد الآبار: <span id="request_well_range_val"></span></label>
 								<input type="range" min="0" max="10" data-view="request_well_range_val" value="0" id="request_well" name="request_well" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_request_well">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 request_farm_area">
 								<label for="request_hall" class="">مشب: <span id="request_mushub_range_val"></span></label>
 								<input type="range" min="0" max="10" data-view="request_mushub_range_val" value="0" id="request_mushub" name="request_mushub" class="form-control-range range_input" />
@@ -401,7 +407,7 @@
 								<div class="d-none err_notification" id="valid_request_tree">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 request_home_area">
 								<label for="request_hall" class="">الصالات: <span id="request_hall_range_val"></span></label>
 								<input type="range" min="0" max="80" data-view="request_hall_range_val" value="0" id="request_hall" name="request_hall" class="form-control-range range_input" />
@@ -418,7 +424,7 @@
 									</div>
 								</div>
 								<div class="d-none err_notification" id="valid_request_rooms">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 request_home_area">
 								<label for="request_bath" class="">عدد الحمامات: </label>
 								<div class="row">
@@ -449,7 +455,7 @@
 								<div class="d-none err_notification" id="valid_request_unit_num">this field required</div>
 							</div>
 						</div>
-						<div class="row">	
+						<div class="row">
 							<div class="col-sm mb-3 request_home_area">
 								<label for="request_car">
 									<input type="checkbox" id="request_car" name="request_car" value="1">
@@ -563,7 +569,7 @@
 	<!-- Modal For update request -->
 	<div class="modal bd-example-modal-lg modal_with_form" id="upd_request">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="upd_request_form" method="post" action="<?php echo URL?>my_land/upd_request" data-model="upd_request" data-type="upd_request">
+			<form class="row g-3 model_form" id="upd_request_form" method="post" action="<?php echo URL ?>my_land/upd_request" data-model="upd_request" data-type="upd_request">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="upd_request_title"><i class="fa fa-plus"></i> تعديل طلب</h5>
@@ -575,7 +581,7 @@
 						<input type="hidden" class="" name="id" :value="upd_land.ID" />
 						<div class="floating-panel">
 							<input class="delete-circle" type="button" value="مسح دائرة" />
-							<input class="delete-rectangle" type="button" value="مسح مستطيل" >
+							<input class="delete-rectangle" type="button" value="مسح مستطيل">
 						</div>
 						<div id="upd_request_map_area" class="map_area"></div>
 						<input type="hidden" id="upd_request_map_data" name="upd_request_map_data" :value="upd_land.LOCATION" />
@@ -628,32 +634,32 @@
 									</div>
 								</div>
 								<div class="d-none err_notification" id="valid_upd_request_price">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_request_currency" class="">العملة</label>
-								<select name="upd_request_currency" id="upd_request_currency" class="form-control" required >
-									<option  v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
+								<select name="upd_request_currency" id="upd_request_currency" class="form-control" required>
+									<option v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_upd_request_currency">this field required</div>
 							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_request_interface" class="">واجهة</label>
 								<select name="upd_request_interface" id="upd_request_interface" class="form-control">
-									<option value="" selected disabled >اختر الواجهة</option>
+									<option value="" selected disabled>اختر الواجهة</option>
 									<option v-for="(x,id) in interf" v-bind:value="id" :selected="id == upd_land.INTERFACE">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_upd_request_interface">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 upd_farm_area">
 								<label for="upd_request_rooms" class="">عدد الابار: <span id="upd_request_well_range_val">{{upd_land.WELL}}</span></label>
 								<input type="range" min="0" max="10" data-view="upd_request_well_range_val" :value="(upd_land.WELL == null)?0:upd_land.ROOMS" id="upd_request_well" name="upd_request_well" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_upd_request_well">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 upd_farm_area">
 								<label for="upd_request_hall" class="">مشب: <span id="upd_request_mushub_range_val">{{upd_land.MUSHUB}}</span></label>
-								<input type="range" min="0" max="10" data-view="upd_request_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB"  id="upd_request_mushub" name="upd_request_mushub" class="form-control-range range_input" />
+								<input type="range" min="0" max="10" data-view="upd_request_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB" id="upd_request_mushub" name="upd_request_mushub" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_upd_request_mushub">this field required</div>
 							</div>
 							<div class="col-sm mb-3 upd_farm_area">
@@ -669,7 +675,7 @@
 								<div class="d-none err_notification" id="valid_upd_request_tree">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 upd_request_home_area">
 								<label for="upd_request_hall" class="">الصالات: <span id="upd_request_hall_range_val">{{upd_land.HALLS}}</span></label>
 								<input type="range" min="0" max="80" data-view="upd_request_hall_range_val" :value="(upd_land.HALLS == null)?0:upd_land.HALLS" id="upd_request_hall" name="upd_request_hall" class="form-control-range range_input" />
@@ -686,7 +692,7 @@
 									</div>
 								</div>
 								<div class="d-none err_notification" id="valid_upd_request_rooms">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 upd_request_home_area">
 								<label for="upd_request_bath" class="">عدد الحمامات: </label>
 								<div class="row">
@@ -708,7 +714,7 @@
 							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_request_road" class="">عرض الشارع: <span id="upd_request_road_range_val">{{upd_land.ROAD}}</span></label>
-								<input type="range" min="2" max="150" step="2" :value="(upd_land.ROAD == null)?0:upd_land.ROAD"  data-view="upd_request_road_range_val" name="upd_request_road" class="form-control-range range_input" />
+								<input type="range" min="2" max="150" step="2" :value="(upd_land.ROAD == null)?0:upd_land.ROAD" data-view="upd_request_road_range_val" name="upd_request_road" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_upd_request_road">this field required</div>
 							</div>
 							<div class="col-sm mb-3 upd_request_home_area">
@@ -717,7 +723,7 @@
 								<div class="d-none err_notification" id="valid_upd_request_unit_num">this field required</div>
 							</div>
 						</div>
-						<div class="row">	
+						<div class="row">
 							<div class="col-sm mb-3 upd_home_area">
 								<label for="upd_request_car">
 									<input type="checkbox" id="upd_request_car" name="upd_request_car" :checked="upd_land.CARS == 1" value="1">
@@ -827,11 +833,11 @@
 			</form>
 		</div>
 	</div>
-	
-    <!-- Modal For add new land API -->
+
+	<!-- Modal For add new land API -->
 	<div class="modal bd-example-modal-lg" id="new_land_api">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3" id="new_api_form" v-on:submit.prevent="get_api_land()" method="post" action="<?php echo URL?>my_land/new_land" >
+			<form class="row g-3" id="new_api_form" v-on:submit.prevent="get_api_land()" method="post" action="<?php echo URL ?>my_land/new_land">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="new_land_api_title"><i class="fa fa-plus"></i> إضافة عقار</h5>
@@ -845,7 +851,7 @@
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_id_type" class="">نوع الهوية</label>
-								<select name="new_id_type" class="form-control border border-primary rounded" >
+								<select name="new_id_type" class="form-control border border-primary rounded">
 									<option value="1" :selected="config.ID_TYPE == 1">هوية وطنية</option>
 									<option value="2" :selected="config.ID_TYPE == 2">منشأه</option>
 								</select>
@@ -865,10 +871,10 @@
 							</div>
 						</div>
 						<div class="d-flex justify-content-center">
-						    <div id="kk_loader" class="spinner-border text-success d-none" role="status">
-						        <span class="sr-only">Loading...</span>
-						    </div>
-                        </div>
+							<div id="kk_loader" class="spinner-border text-success d-none" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
 						<div class="form_msg d-none">تم حفط العقار</div>
 					</div>
 					<div class="modal-footer">
@@ -880,10 +886,10 @@
 		</div>
 	</div>
 
-    <!-- Modal For add new land -->
+	<!-- Modal For add new land -->
 	<div class="modal bd-example-modal-lg modal_with_form" id="new_land">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="new_staff_form" method="post" action="<?php echo URL?>my_land/new_land" data-model="new_land" data-type="new_land">
+			<form class="row g-3 model_form" id="new_staff_form" method="post" action="<?php echo URL ?>my_land/new_land" data-model="new_land" data-type="new_land">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="new_land_title"><i class="fa fa-plus"></i> إضافة عقار</h5>
@@ -891,7 +897,7 @@
 					</div>
 					<div class="container"></div>
 					<div class="modal-body">
-					    <!--
+						<!--
 					    $land['l_adv']          = "ADV";
 			$land['l_neighborhood'] = $result['location']['districtCode'];
 			
@@ -960,11 +966,11 @@
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
 								<label for="isConstrained">وجود قيد؟</label>
-								<input type="checkbox" id="isConstrained" name="isConstrained" :value="api_land.isConstrained"  >
+								<input type="checkbox" id="isConstrained" name="isConstrained" :value="api_land.isConstrained">
 							</div>
 							<div class="col-sm mb-3">
 								<label for="isPawned">وجود رهن؟</label>
-								<input type="checkbox" id="isPawned" name="isPawned" :value="api_land.isPawned"  >
+								<input type="checkbox" id="isPawned" name="isPawned" :value="api_land.isPawned">
 							</div>
 						</div>
 						<!-- <div class="row">
@@ -977,7 +983,7 @@
 							</div>
 							<div class="col-sm mb-3" v-else-if="local_delegate == 'LOCAL'">
 								<label for="new_delegate_file" class="">ملف التفويض</label>
-								<input type="file" name="new_delegate_file" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
+								<input type="file" name="new_delegate_file" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
 								<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
 							</div>
 						</div> -->
@@ -1012,18 +1018,33 @@
 								<label for="propertyPrice" class="">سعر العقار</label>
 								<input type="number" lang="en" step="any" id="propertyPrice" :value="api_land.propertyPrice" class="form-control border border-primary rounded" placeholder="سعر العقار" readonly />
 							</div>
+						</div>
+						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="propertyTotalPrice" class="">السعر الإجمالي</label>
-								<input type="number" lang="en" step="any" id="propertyTotalPrice" :value="api_land.propertyTotalPrice" class="form-control border border-primary rounded" placeholder="السعر الإجمالي" readonly />
+								<label for="numberOfRooms" class="">عدد الغرف</label>
+								<input type="number" lang="en" id="numberOfRooms" :value="api_land.numberOfRooms" class="form-control border border-primary rounded" placeholder="عدد الغرف" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="propertyType" class="">نوع العقار</label>
+								<input type="text" lang="en" id="propertyType" :value="api_land.propertyType" class="form-control border border-primary rounded" placeholder="نوع العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="propertyAge" class="">عمر العقار</label>
+								<input type="text" lang="en" id="propertyAge" :value="api_land.propertyAge" class="form-control border border-primary rounded" placeholder="عمر العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="advertisementType" class="">نوع الإعلان</label>
+								<input type="text" lang="en" id="advertisementType" :value="api_land.advertisementType" class="form-control border border-primary rounded" placeholder="نوع الإعلان" readonly />
 							</div>
 						</div>
 
+
 						<div class="row align-items-center">
 							<div class="col-sm mb-3">
-								<img id="new_land_img" src="<?php echo URL;?>public/IMG/land/default.png" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
+								<img id="new_land_img" src="<?php echo URL; ?>public/IMG/land/default.png" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
 							</div>
 							<div class="col-sm mb-3">
-								<input type="file" name="new_land_img" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload image_upload form-control-file form-control-sm" data-id="new_land_img" id="img" accept="image/*" />
+								<input type="file" name="new_land_img" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload image_upload form-control-file form-control-sm" data-id="new_land_img" id="img" accept="image/*" />
 								<div class="d-none err_notification" id="valid_new_land_img">this field required</div>
 							</div>
 						</div>
@@ -1035,7 +1056,7 @@
 							</div>
 						</div>
 						<div class="row">
-                            <input type="hidden" id="new_adv" name="new_adv" value="" />
+							<input type="hidden" id="new_adv" name="new_adv" value="" />
 							<div class="col-sm mb-3">
 								<label for="new_type" class="">النوع</label>
 								<select name="new_type" id="new_type" class="form-control border border-primary rounded" required @change="onChangeType($event,'new_home_area','new_farm_area')">
@@ -1058,25 +1079,25 @@
 								<label for="new_price" class="">السعر</label>
 								<input type="number" lang="en" id="new_price" name="new_price" :value="api_land.propertyPrice" class="form-control border border-primary rounded" placeholder="السعر" required />
 								<div class="d-none err_notification" id="valid_new_price">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3">
 								<label for="new_currency" class="">العملة</label>
-								<select name="new_currency" id="new_currency" class="form-control border border-primary rounded" required >
-									<option  v-for="(x,id) in currency" :selected="x == 'SAR'" v-bind:value="x">{{x}}</option>
+								<select name="new_currency" id="new_currency" class="form-control border border-primary rounded" required>
+									<option v-for="(x,id) in currency" :selected="x == 'SAR'" v-bind:value="x">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_new_currency">this field required</div>
 							</div>
 							<div class="col-sm mb-3">
 								<label for="new_interface" class="">واجهة</label>
-								<select name="new_interface" id="new_interface" class="form-control border border-primary rounded" >
-									<option value="" selected disabled >اختر الواجهة</option>
-									<option  v-for="(x,id) in interf" selected="x == api_land.propertyFace" v-bind:value="id">{{x}}</option>
+								<select name="new_interface" id="new_interface" class="form-control border border-primary rounded">
+									<option value="" selected disabled>اختر الواجهة</option>
+									<option v-for="(x,id) in interf" selected="x == api_land.propertyFace" v-bind:value="id">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_new_interface">this field required</div>
 							</div>
 						</div>
 						<div class="row">
-                            <div class="col-sm mb-3 new_home_area">
+							<div class="col-sm mb-3 new_home_area">
 								<label for="new_unit_no" class="">رقم الوحدة</label>
 								<input type="number" lang="en" id="new_unit_no" :value="api_land.propertyPrice" name="new_unit_no" class="form-control border border-primary rounded" placeholder="الوحدة" />
 								<div class="d-none err_notification" id="valid_new_unit_no">this field required</div>
@@ -1085,9 +1106,9 @@
 								<label for="new_year" class="">سنة التشييد</label> {{api_land.propertyAge}}
 								<input type="date" data-view="new_year_range_val" id="new_year" name="new_year" class="form-control border border-primary rounded" />
 								<div class="d-none err_notification" id="valid_new_year">this field required</div>
-							</div>				
+							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 new_farm_area">
 								<label for="new_bath" class="">عدد النخيل</label>
 								<input type="number" lang="en" id="new_tree" name="new_tree" class="form-control border border-primary rounded" placeholder="عدد النخيل" />
@@ -1097,20 +1118,20 @@
 								<label for="new_rooms" class="">عدد الابار: <span id="new_well_range_val"></span></label>
 								<input type="range" min="0" max="10" data-view="new_well_range_val" value="0" id="new_well" name="new_well" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_new_well">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 new_farm_area">
 								<label for="new_hall" class="">مشب: <span id="new_mushub_range_val"></span></label>
 								<input type="range" min="0" max="10" data-view="new_mushub_range_val" value="0" id="new_mushub" name="new_mushub" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_new_mushub">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 new_home_area">
-								<label for="new_rooms" class="">عدد الغرف: 
-								<span id="new_r_range_val">{{api_land.numberOfRooms}}</span></label>
+								<label for="new_rooms" class="">عدد الغرف:
+									<span id="new_r_range_val">{{api_land.numberOfRooms}}</span></label>
 								<input type="range" min="0" max="80" data-view="new_r_range_val" :value="api_land.numberOfRooms" id="new_rooms" name="new_rooms" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_new_type">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 new_home_area">
 								<label for="new_bath" class="">عدد الحمامات: <span id="new_bath_range_val"></span></label>
 								<input type="range" min="0" max="80" data-view="new_bath_range_val" value="0" id="new_bath" name="new_bath" class="form-control-range range_input" />
@@ -1139,7 +1160,7 @@
 								<div class="d-none err_notification" id="valid_new_unit_num">this field required</div>
 							</div>
 						</div>
-						<div class="row">	
+						<div class="row">
 							<div class="col-sm mb-3 new_home_area">
 								<label for="new_car">
 									<input type="checkbox" id="new_car" name="new_car" value="1">
@@ -1242,32 +1263,32 @@
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_mortage" class="">هل يوجد الرهن أو القيد الذي يمنع او يحد من التصرف او الانتفاع من العقار؟</label>
-								<textarea type="text" id="new_mortage" name="new_mortage" :value="api_land.obligationsOnTheProperty" class="form-control border border-primary rounded" placeholder="لا يوجد" >{{api_land.obligationsOnTheProperty}}</textarea>
+								<textarea type="text" id="new_mortage" name="new_mortage" :value="api_land.obligationsOnTheProperty" class="form-control border border-primary rounded" placeholder="لا يوجد">{{api_land.obligationsOnTheProperty}}</textarea>
 								<div class="d-none err_notification" id="valid_new_mortage">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_law" class="">الحقوق والالتزامات على العقار الغير موثقة في وثيقة العقار</label>
-								<textarea type="text" id="new_law" name="new_law" class="form-control border border-primary rounded" placeholder="لا يوجد" >لا يوجد</textarea>
+								<textarea type="text" id="new_law" name="new_law" class="form-control border border-primary rounded" placeholder="لا يوجد">لا يوجد</textarea>
 								<div class="d-none err_notification" id="valid_new_law">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_info" class="">المعلومات التي قد تؤثر على العقار سواء في خفض قيمته او التأثير على قرار المستهدف بالإعلان</label>
-								<textarea type="text" id="new_info" name="new_info" class="form-control border border-primary rounded" placeholder="لا يوجد" >لا يوجد</textarea>
+								<textarea type="text" id="new_info" name="new_info" class="form-control border border-primary rounded" placeholder="لا يوجد">لا يوجد</textarea>
 								<div class="d-none err_notification" id="valid_new_info">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="new_dispute" class=""> النزاعات القائمة على العقار</label>
-								<textarea type="text" id="new_dispute" name="new_dispute" class="form-control border border-primary rounded" placeholder="لا يوجد" >لا يوجد</textarea>
+								<textarea type="text" id="new_dispute" name="new_dispute" class="form-control border border-primary rounded" placeholder="لا يوجد">لا يوجد</textarea>
 								<div class="d-none err_notification" id="valid_new_dispute">this field required</div>
 							</div>
 						</div>
-                        <div class="row ">
+						<div class="row ">
 							<div class="col-sm mb-3">
 								حدود واطوال العقار
 							</div>
@@ -1278,7 +1299,7 @@
 								<label for="new_des_n" class="">الطول من الشمال</label>
 								<input type="number" lang="en" id="new_des_n" name="new_des_n" class="form-control border border-primary rounded" placeholder="الطول من الشمال" step="any" />
 								<div class="d-none err_notification" id="valid_new_des_n">this field required</div>
-							</div>	
+							</div>
 							<div class="col col-sm-3 mb-3">
 								<label for="new_des_s" class="">الطول من الجنوب</label>
 								<input type="number" lang="en" id="new_des_s" name="new_des_s" class="form-control border border-primary rounded" placeholder="الطول من الجنوب" step="any" />
@@ -1293,12 +1314,12 @@
 								<label for="new_des_w" class="">الطول من الغرب</label>
 								<input type="number" lang="en" id="new_des_w" name="new_des_w" class="form-control border border-primary rounded" placeholder="الطول من الغرب" step="any" />
 								<div class="d-none err_notification" id="valid_new_des_w">this field required</div>
-							</div>	
+							</div>
 						</div>
 						<div class="row">
 							<div class="col col-sm-3 mb-3">
 								<label for="file" class="label-control">المرفقات</label>
-								<input type="file" name="new_file_image[]" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload multi_image_upload form-control-file" data-id="new_images_area" multiple />
+								<input type="file" name="new_file_image[]" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload multi_image_upload form-control-file" data-id="new_images_area" multiple />
 								<div class="d-none err_notification" id="valid_new_file_image">this field required</div>
 							</div>
 						</div>
@@ -1307,7 +1328,7 @@
 							<div class="col-sm  mb-3">
 								<label class="label-control"></label>
 								<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
-								
+
 							</div>
 						</div>
 						<div class="row">
@@ -1324,7 +1345,7 @@
 								<tbody>
 									<tr align="center" v-for="(x ,index) in company">
 										<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" /></td>
-										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100"/></td>
+										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
 										<td>{{x.NAME}}</td>
 										<!--td>{{x.PHONE}}</td>
 										<td>{{x.EMAIL}}</td-->
@@ -1346,7 +1367,7 @@
 	<!-- Modal For update land	-->
 	<div class="modal bd-example-modal-lg modal_with_form" id="upd_land">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL?>my_land/upd_land" data-model="upd_land" data-type="upd_land">
+			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/upd_land" data-model="upd_land" data-type="upd_land">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> تعديل عقار</h5>
@@ -1357,26 +1378,26 @@
 						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
 						<input type="hidden" class="" name="id" :value="upd_land.ID" />
 						<div v-if="upd_land.ADV_NO.length == 0" id="upd_map_area" class="map_area"></div>
-						<input type="hidden" lang="en" step="any" id="upd_lng" name="upd_lng" :value="upd_land.LOC_LNG"/>
-						<input type="hidden" lang="en" step="any" id="upd_lat" name="upd_lat" :value="upd_land.LOC_LAT"/>
+						<input type="hidden" lang="en" step="any" id="upd_lng" name="upd_lng" :value="upd_land.LOC_LNG" />
+						<input type="hidden" lang="en" step="any" id="upd_lat" name="upd_lat" :value="upd_land.LOC_LAT" />
 						<input type="hidden" lang="en" id="upd_location" name="upd_location" :value="upd_land.LOCATION" />
 						<div class="row">
 							<div class="col-sm mb-3">
 								<img id="upd_land_img" :src="upd_land.IMG" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
 							</div>
 							<div class="col-sm mb-3">
-								<input type="file" name="upd_land_img" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload image_upload form-control-file form-control-sm" data-id="upd_land_img" id="img" accept="image/*" />
+								<input type="file" name="upd_land_img" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload image_upload form-control-file form-control-sm" data-id="upd_land_img" id="img" accept="image/*" />
 								<div class="d-none err_notification" id="valid_new_land_img">this field required</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_space" class="">المساحة</label>
 								<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_space" class="form-control" :value="upd_land.M_SIZE" placeholder="المساحة" required />
 								<div class="d-none err_notification" id="valid_upd_space">this field required</div>
 							</div>
-                            <div class="col-sm mb-3">
+							<div class="col-sm mb-3">
 								<label for="upd_block" class="">المربع</label>
 								<input type="number" name="upd_block" class="form-control" placeholder="المربع" required :value="upd_land.BLOCK" />
 								<div class="d-none err_notification" id="valid_upd_block">this field required</div>
@@ -1385,20 +1406,20 @@
 								<label for="upd_no" class="">رقم العقار</label>
 								<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_no" class="form-control" :value="upd_land.NO" placeholder="رقم العقار" required />
 								<div class="d-none err_notification" id="valid_upd_no">this field required</div>
-							    <div class="err_notification " id="duplicate_upd_no">البيانات المدخلة في هذا الحقل مدخلة من قبل</div>
+								<div class="err_notification " id="duplicate_upd_no">البيانات المدخلة في هذا الحقل مدخلة من قبل</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_relation" class="">العلاقة بالعقار</label>
-								<select name="upd_relation" :readonly="upd_land.ADV_NO.length != 0" id="upd_relation" class="form-control" @change="onChangeRelation($event)" >
+								<select name="upd_relation" :readonly="upd_land.ADV_NO.length != 0" id="upd_relation" class="form-control" @change="onChangeRelation($event)">
 									<option v-for="(x,id) in relation" v-bind:value="id" v-bind:data-dele="x.del" :selected="id == upd_land.RELATION">{{x.NAME}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_upd_relation">this field required</div>
 							</div>
-                            <div class="col-sm mb-3" v-if="delegate">
+							<div class="col-sm mb-3" v-if="delegate">
 								<label for="upd_relation_type" class="">نوع التفويض</label>
-								<select name="upd_relation_type" id="upd_relation_type" class="form-control" @change="onChangeRelation_type($event)" >
+								<select name="upd_relation_type" id="upd_relation_type" class="form-control" @change="onChangeRelation_type($event)">
 									<option value=""></option>
 									<option value="REG">تفويض من الهيئة العامة للعقار</option>
 									<option value="LOCAL">تفويض كتابي</option>
@@ -1411,16 +1432,16 @@
 								<div class="d-none err_notification" id="valid_upd_delegate">this field required</div>
 							</div>
 							<div class="col-sm mb-3" v-else-if="local_delegate == 'LOCAL'">
-								<label for="upd_delegate_file" class="">ملف التفويض  <a v-if="upd_land.DELEGATE_FILE" :href="upd_land.DELEGATE_FILE" target="_blank">{{upd_land.DELEGATE_FILE_NAME}}</a></label>
-								<input type="file" name="upd_delegate_file" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
+								<label for="upd_delegate_file" class="">ملف التفويض <a v-if="upd_land.DELEGATE_FILE" :href="upd_land.DELEGATE_FILE" target="_blank">{{upd_land.DELEGATE_FILE_NAME}}</a></label>
+								<input type="file" name="upd_delegate_file" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
 								<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_desc" class="">وصف العقار</label>
-								<textarea name="upd_desc" class="form-control" placeholder="وصف العقار" required >{{upd_land.DESC}}</textarea>
+								<textarea name="upd_desc" class="form-control" placeholder="وصف العقار" required>{{upd_land.DESC}}</textarea>
 								<div class="d-none err_notification" id="valid_upd_desc">this field required</div>
 							</div>
 						</div>
@@ -1434,13 +1455,13 @@
 							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_type" class="">النوع</label>
-								<select v-if="upd_land.ADV_NO.length == 0" name="upd_type" class="form-control" required  @change="onChangeType($event,'upd_home_area','upd_farm_area')">
+								<select v-if="upd_land.ADV_NO.length == 0" name="upd_type" class="form-control" required @change="onChangeType($event,'upd_home_area','upd_farm_area')">
 									<option value="" selected disabled>اخترر النوع</option>
 									<option v-for="(x,id) in types" v-bind:value="x.ID" :selected="x.ID == upd_land.TYPE">{{x.NAME}}</option>
 								</select>
 								<template v-eles="">
-								    <input type="hidden" name="upd_type" :value="upd_land.TYPE"/>
-								    {{types[upd_land.TYPE].NAME}}
+									<input type="hidden" name="upd_type" :value="upd_land.TYPE" />
+									{{types[upd_land.TYPE].NAME}}
 								</template>
 								<div class="d-none err_notification" id="valid_upd_type">this field required</div>
 							</div>
@@ -1451,8 +1472,8 @@
 									<option v-for="(x,id) in statues" :value="id" :data-id="id" :selected="id == upd_land.FOR">{{x.NAME}}</option>
 								</select>
 								<template v-eles="">
-								    <input type="hidden" name="upd_for" :value="upd_land.FOR"/>
-								    {{statues[upd_land.FOR].NAME}}
+									<input type="hidden" name="upd_for" :value="upd_land.FOR" />
+									{{statues[upd_land.FOR].NAME}}
 								</template>
 								<div class="d-none err_notification" id="valid_new_for">this field required</div>
 							</div>
@@ -1462,24 +1483,24 @@
 								<label for="upd_price" class="">السعر</label>
 								<input type="number" lang="en" name="upd_price" class="form-control" :value="upd_land.UPD_PRICE" placeholder="السعر" required />
 								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_currency" class="">العملة</label>
-								<select name="upd_currency" class="form-control" required >
-									<option value="" selected disabled >اختر العملة</option>
-									<option  v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
+								<select name="upd_currency" class="form-control" required>
+									<option value="" selected disabled>اختر العملة</option>
+									<option v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
 								</select>
 								<div class="d-none err_notification" id="valid_upd_currency">this field required</div>
 							</div>
 							<div class="col-sm mb-3">
 								<label for="upd_interface" class="">واجهة</label>
-								<select v-if="upd_land.ADV_NO.length == 0" name="upd_interface" id="upd_interface" class="form-control" >
-									<option value="" selected disabled >اختر الواجهة</option>
-									<option  v-for="(x,id) in interf" v-bind:value="id" :selected="id == upd_land.INTERFACE">{{x}}</option>
+								<select v-if="upd_land.ADV_NO.length == 0" name="upd_interface" id="upd_interface" class="form-control">
+									<option value="" selected disabled>اختر الواجهة</option>
+									<option v-for="(x,id) in interf" v-bind:value="id" :selected="id == upd_land.INTERFACE">{{x}}</option>
 								</select>
 								<template v-eles="">
-								    <input type="hidden" name="upd_interface" :value="upd_land.INTERFACE"/>
-								    {{interf[upd_land.INTERFACE]}}
+									<input type="hidden" name="upd_interface" :value="upd_land.INTERFACE" />
+									{{interf[upd_land.INTERFACE]}}
 								</template>
 								<div class="d-none err_notification" id="valid_upd_interface">this field required</div>
 							</div>
@@ -1496,7 +1517,7 @@
 								<div class="d-none err_notification" id="valid_upd_year">this field required</div>
 							</div>
 						</div>
-						<div class="row" >
+						<div class="row">
 							<div class="col-sm mb-3 upd_farm_area">
 								<label for="upd_tree" class="">عدد النخيل</label>
 								<input type="number" lang="en" id="upd_tree" name="upd_tree" :value="upd_land.TREES" class="form-control" placeholder="عدد النخيل" />
@@ -1506,10 +1527,10 @@
 								<label for="upd_well" class="">عدد الابار: <span id="new_well_range_val">{{upd_land.WELL}}</span></label>
 								<input type="range" min="0" max="10" data-view="new_well_range_val" :value="(upd_land.WELL == null)?0:upd_land.ROOMS" id="upd_well" name="upd_well" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_upd_well">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 upd_farm_area">
 								<label for="new_hall" class="">مشب: <span id="new_mushub_range_val">{{upd_land.MUSHUB}}</span></label>
-								<input type="range" min="0" max="10" data-view="new_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB"  id="new_mushub" name="new_mushub" class="form-control-range range_input" />
+								<input type="range" min="0" max="10" data-view="new_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB" id="new_mushub" name="new_mushub" class="form-control-range range_input" />
 								<div class="d-none err_notification" id="valid_new_mushub">this field required</div>
 							</div>
 						</div>
@@ -1517,9 +1538,9 @@
 							<div class="col-sm mb-3 upd_home_area">
 								<label for="upd_rooms" class="">عدد الغرف: <span id="upd_r_range_val">{{upd_land.ROOMS}}</span></label>
 								<input v-if="upd_land.ADV_NO.length == 0" type="range" min="0" max="80" data-view="upd_r_range_val" :value="(upd_land.ROOMS == null)?0:upd_land.ROOMS" id="upd_rooms" name="upd_rooms" class="form-control range_input" />
-								<input v-eles="" type="hidden" name="upd_rooms" :value="upd_land.ROOMS"/>
+								<input v-eles="" type="hidden" name="upd_rooms" :value="upd_land.ROOMS" />
 								<div class="d-none err_notification" id="valid_upd_rooms">this field required</div>
-							</div>	
+							</div>
 							<div class="col-sm mb-3 upd_home_area">
 								<label for="upd_bath" class="">عدد الحمامات: <span id="upd_bath_range_val">{{upd_land.BATHS}}</span></label>
 								<input type="range" min="0" max="80" data-view="upd_bath_range_val" :value="(upd_land.BATHS == null)?0:upd_land.BATHS" id="upd_bath" name="upd_bath" class="form-control range_input" />
@@ -1534,7 +1555,7 @@
 								<label for="new_unit_num" class="">عدد الوحدات: <span id="upd_unit_num_val">{{upd_land.UNIT_NUM}}</span></label>
 								<input type="range" min="1" max="80" step="1" data-view="upd_unit_num_val" name="upd_unit_nun" class="form-control-range range_input" :value="upd_land.UNIT_NUM" />
 								<div class="d-none err_notification" id="valid_new_unit_num">this field required</div>
-							</div>						
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3 upd_home_area">
@@ -1545,7 +1566,7 @@
 							<div class="col-sm mb-3">
 								<label for="upd_road" class="">عرض الشارع: <span id="upd_road_range_val">{{upd_land.ROAD}}</span></label>
 								<input v-if="upd_land.ADV_NO.length == 0" type="range" min="2" max="150" step="2" :value="(upd_land.ROAD == null)?0:upd_land.ROAD" data-view="upd_road_range_val" name="upd_road" id="upd_road" class="form-control range_input" />
-								<input v-eles="" type="hidden" name="upd_road" :value="upd_land.ROAD"/>
+								<input v-eles="" type="hidden" name="upd_road" :value="upd_land.ROAD" />
 								<div class="d-none err_notification" id="valid_upd_road">this field required</div>
 							</div>
 						</div>
@@ -1599,7 +1620,7 @@
 								<div class="d-none err_notification" id="valid_upd_monsters">this field required</div>
 							</div>
 						</div>
-						<div class="row">							
+						<div class="row">
 							<div class="col-sm mb-3 upd_home_area">
 								<label for="upd_swim">
 									<input type="checkbox" id="upd_swim" name="upd_swim" :checked="upd_land.SWIM == 1" value="1">
@@ -1640,7 +1661,7 @@
 								</label>
 								<div class="d-none err_notification" id="valid_upd_dr_room">this field required</div>
 							</div>
-                            <div class="col-sm mb-3 new_home_area">
+							<div class="col-sm mb-3 new_home_area">
 								<label for="upd_air_cond">
 									<input type="checkbox" id="upd_air_cond" name="upd_air_cond" :checked="upd_land.AIR_COND == 1" value="1">
 									التكييف
@@ -1649,35 +1670,35 @@
 								<div class="d-none err_notification" id="valid_upd_air_cond">this field required</div>
 							</div>
 						</div>
-                        <div class="row">
+						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_mortage" class="">هل يوجد الرهن أو القيد الذي يمنع او يحد من التصرف او الانتفاع من العقار؟</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_mortage" name="upd_mortage" class="form-control" placeholder="لا يوجد" >{{upd_land.MORTGAGE}}</textarea>
+								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_mortage" name="upd_mortage" class="form-control" placeholder="لا يوجد">{{upd_land.MORTGAGE}}</textarea>
 								<div class="d-none err_notification" id="valid_upd_mortage">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_law" class="">الحقوق والالتزامات على العقار الغير موثقة في وثيقة العقار</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_law" name="upd_law" class="form-control" placeholder="لا يوجد" >{{upd_land.LAW}}</textarea>
+								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_law" name="upd_law" class="form-control" placeholder="لا يوجد">{{upd_land.LAW}}</textarea>
 								<div class="d-none err_notification" id="valid_upd_law">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_info" class="">المعلومات التي قد تؤثر على العقار سواء في خفض قيمته او التأثير على قرار المستهدف بالإعلان</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_info" name="upd_info" class="form-control" placeholder="لا يوجد" >{{upd_land.INFO}}</textarea>
+								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_info" name="upd_info" class="form-control" placeholder="لا يوجد">{{upd_land.INFO}}</textarea>
 								<div class="d-none err_notification" id="valid_upd_info">this field required</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
 								<label for="upd_dispute" class=""> النزاعات القائمة على العقار</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_dispute" name="upd_dispute" class="form-control" placeholder="لا يوجد" >{{upd_land.DISPUTES}}</textarea>
+								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_dispute" name="upd_dispute" class="form-control" placeholder="لا يوجد">{{upd_land.DISPUTES}}</textarea>
 								<div class="d-none err_notification" id="valid_upd_dispute">this field required</div>
 							</div>
 						</div>
-                        <div class="row ">
+						<div class="row ">
 							<div class="col-sm mb-3">
 								حدود واطوال العقار
 							</div>
@@ -1687,7 +1708,7 @@
 								<label for="upd_des_n" class="">الطول من الشمال</label>
 								<input type="number" lang="en" id="upd_des_n" name="upd_des_n" class="form-control" :value="upd_land.DES_N" placeholder="الطول من الشمال" step="any" />
 								<div class="d-none err_notification" id="valid_upd_des_n">this field required</div>
-							</div>	
+							</div>
 							<div class="col col-sm-3 mb-3">
 								<label for="upd_des_s" class="">الطول من الجنوب</label>
 								<input type="number" lang="en" id="upd_des_s" name="upd_des_s" class="form-control" :value="upd_land.DES_S" placeholder="الطول من الجنوب" step="any" />
@@ -1702,12 +1723,12 @@
 								<label for="upd_des_w" class="">الطول من الغرب</label>
 								<input type="number" lang="en" id="upd_des_w" name="upd_des_w" class="form-control" :value="upd_land.DES_W" placeholder="الطول من الغرب" step="any" />
 								<div class="d-none err_notification" id="valid_upd_des_w">this field required</div>
-							</div>	
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm  mb-3">
 								<label for="upd_file_image" class="label-control">المرفقات</label>
-								<input type="file" name="upd_file_image[]" max_size="<?php echo MAX_FILE_SIZE ;?>" class="file-upload multi_image_upload form-control-file" data-id="upd_images_area" multiple />
+								<input type="file" name="upd_file_image[]" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload multi_image_upload form-control-file" data-id="upd_images_area" multiple />
 								<div class="d-none err_notification" id="valid_upd_file_image">this field required</div>
 							</div>
 						</div>
@@ -1724,7 +1745,7 @@
 							<div class="col-sm  mb-3">
 								<label class="label-control"></label>
 								<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
-								
+
 							</div>
 						</div>
 						<div class="row">
@@ -1741,7 +1762,7 @@
 								<tbody>
 									<tr v-for="(x ,index) in company">
 										<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" :checked="upd_land.COMPANY.includes(x.ID)" /></td>
-										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100"/></td>
+										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
 										<td>{{x.NAME}}</td>
 										<!--td>{{x.PHONE}}</td>
 										<td>{{x.EMAIL}}</td-->
@@ -1750,7 +1771,7 @@
 							</table>
 						</div>
 						<div class="form_msg d-none">تم تعديل العقار</div>
-						
+
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> تعديل العقار</button>
@@ -1760,11 +1781,11 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<!-- Modal For delete land	-->
 	<div class="modal bd-example-modal-lg modal_with_form" id="del_land">
 		<div class="modal-dialog modal-md">
-			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL?>my_land/del_land" data-model="del_land" data-type="del_land">
+			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/del_land" data-model="del_land" data-type="del_land">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title"><i class="fa fa-edit"></i> حذف عقار</h5>
@@ -1781,15 +1802,15 @@
 						</div>
 						<div class="row">
 							<div class="col-sm mb-3">
-								هل أنت متأكد أنك تريد مسح هذا الاعلان 
-								<br/>
-								{{upd_land.TYPE_NAME}} {{upd_land.FOR_NAME}} {{upd_land.CIT_NAME}} / {{upd_land.NEI_NAME}} / {{upd_land.BLOCK}} 
-								
-							</div>	
+								هل أنت متأكد أنك تريد مسح هذا الاعلان
+								<br />
+								{{upd_land.TYPE_NAME}} {{upd_land.FOR_NAME}} {{upd_land.CIT_NAME}} / {{upd_land.NEI_NAME}} / {{upd_land.BLOCK}}
+
+							</div>
 							<div class="col-sm mb-3">
 								إذا قمت بمسح الاعلان لن يتم استرجاع بياناته
-							</div>	
-							
+							</div>
+
 						</div>
 						<div class="form_msg d-none">تم مسح العقار</div>
 					</div>
@@ -1801,11 +1822,11 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<!-- Modal For vip land	-->
 	<div class="modal bd-example-modal-lg modal_with_form" id="vip_land">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3" id="vip_land_pay" method="post" action="<?php echo URL?>my_land/upgrade"  data-type="add">
+			<form class="row g-3" id="vip_land_pay" method="post" action="<?php echo URL ?>my_land/upgrade" data-type="add">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 v-if="pay_form == 'VIP_BILL'" class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> ترقية العقار للباقة المميزة</h5>
@@ -1819,7 +1840,7 @@
 						<div class="row mr-1">
 							<h5>{{vip_land.TYPE_NAME}} {{vip_land.FOR_NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
 						</div>
-                        <input type="hidden" class="" name="type" :value="pay_form" />
+						<input type="hidden" class="" name="type" :value="pay_form" />
 						<div class="row mr-1" v-if="vip_land.ID">
 							<h5>{{types[vip_land.TYPE].NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
 						</div>
@@ -1832,7 +1853,7 @@
 								<input v-else-if="vip_land.FOR == 'RENT_M'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_MONTH']" placeholder="السعر" required />
 								<input v-else-if="vip_land.FOR == 'RENT_Y'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_YEAR']" placeholder="السعر" required />
 								<input v-else="" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" value="0" placeholder="السعر" required />
-                                <div class="d-none err_notification" id="valid_upd_price">this field required</div>
+								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
 							</div>
 						</div>
 						<div class="row my-2" v-if="pay_form == 'VIP_BILL'">
@@ -1863,17 +1884,17 @@
 							<div class="col-sm mb-3">
 								<label for="vip_card" class="">رقم البطاقة</label>
 								<input type="text" data-paylib="number" lang="en" dir="ltr" autocomplete="off" size="20" class="form-control" value="" placeholder="رقم البطاقة" />
-							<img src="https://iwebkit.net/wp-content/uploads/2021/06/mastercardandvisa.jpg" width="35%">
-							<img src="https://play-lh.googleusercontent.com/n8xRJaDMXDSw_103_w3T7sy1NaatwcXzh2h2gfXu7nRolieu2AsnvdEpgWV1aEMrRg" width="9%" class="mx-1">
-							<img src="https://cdn6.aptoide.com/imgs/1/c/d/1cd63acc2107c45813ec3bb88180afaa_icon.png" width="20%" class="mx-1">								
-							<div class="d-none err_notification" id="valid_vip_card">this field required</div>
+								<img src="https://iwebkit.net/wp-content/uploads/2021/06/mastercardandvisa.jpg" width="35%">
+								<img src="https://play-lh.googleusercontent.com/n8xRJaDMXDSw_103_w3T7sy1NaatwcXzh2h2gfXu7nRolieu2AsnvdEpgWV1aEMrRg" width="9%" class="mx-1">
+								<img src="https://cdn6.aptoide.com/imgs/1/c/d/1cd63acc2107c45813ec3bb88180afaa_icon.png" width="20%" class="mx-1">
+								<div class="d-none err_notification" id="valid_vip_card">this field required</div>
 							</div>
 							<div class="col-sm mb-3">
 								<label>تاريخ انتهاء الصلاحية (YYYY/MM)</label>
-                                <div class="row">
+								<div class="row">
 									<div class="col-sm mb-3 d-flex">
-										<input type="text" class="form-control" data-paylib="expmonth" autocomplete="off"  size="3" placeholder="الشهر">
-										<input type="text" class="form-control" data-paylib="expyear" autocomplete="off"  size="5" placeholder="السنة">
+										<input type="text" class="form-control" data-paylib="expmonth" autocomplete="off" size="3" placeholder="الشهر">
+										<input type="text" class="form-control" data-paylib="expyear" autocomplete="off" size="5" placeholder="السنة">
 									</div>
 								</div>
 							</div>
@@ -1883,7 +1904,7 @@
 								<div class="d-none err_notification" lang="en" autocomplete="off" id="valid_vip_pass">this field required</div>
 							</div>
 						</div>
-                        <div class="row" id="vip_land_pay_error"></div>
+						<div class="row" id="vip_land_pay_error"></div>
 						<div class="form_msg d-none">تمت إضافة العقار للباقة المميزة</div>
 					</div>
 					<div class="modal-footer">
@@ -1895,11 +1916,11 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<!-- Modal For price land ---	->
 	<div class="modal bd-example-modal-lg modal_with_form" id="land_price" >
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3" id="land_bill_form" method="post" action="<?php echo URL?>my_land/land_bill"  data-type="add">
+			<form class="row g-3" id="land_bill_form" method="post" action="<?php echo URL ?>my_land/land_bill"  data-type="add">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> دفع عمولة الاعلان</h5>
@@ -1955,10 +1976,10 @@
 			</form>
 		</div>
 	</div-->
-	
+
 </div>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 <script src="https://maps.googleapis.com/maps/api/js?language=ar&key=AIzaSyC9LAtPj0KJDr5l621IbMZcQinoYO-7-4g&libraries=drawing&v=weekly"></script>
@@ -1967,27 +1988,26 @@
 
 
 <script>
-	var js_cities 		= <?php echo json_encode($this->cities); ?>;
-	var js_company 		= <?php echo json_encode($this->comp_list); ?>;
-	var js_types 		= <?php echo json_encode($this->land_type); ?>;
-	var js_statues 		= <?php echo json_encode(lib::$land_for); ?>;
-	var js_adv 			= <?php echo json_encode(lib::$adv_type); ?>;
-	var js_config 		= <?php echo json_encode($this->conf_list); ?>;
-	var js_currency 	= <?php echo json_encode(lib::$currency); ?>;
-	var js_relation 	= <?php echo json_encode(lib::$land_relation); ?>;
-	var js_land 		= [];
-	var js_interface 	= <?php echo json_encode(lib::$land_interface); ?>;
-	var js_VIP_period	= <?php echo session::get("VIP_PERIOD");?>;
-	var js_VIP_price	= <?php echo session::get("VIP_PRICE");?>;
-	var js_price 		= [];
-	
-    js_price["RENT_YEAR"]= <?php echo session::get("RENT_YEAR");?>;
-	js_price["RENT_DAY"]= <?php echo session::get("RENT_DAY");?>;
-	js_price["RENT_MONTH"] 	= <?php echo session::get("RENT_MONTH");?>;
-	js_price["SALE"] 	= <?php echo session::get("SALE");?>;
-	js_price["INVESTMENT"] 	= <?php echo session::get("INVESTMENT");?>;
-	
-	var upg_pay		= <?php echo (!empty($this->upgrade))?json_encode($this->upgrade):"''"; ?>;
-	var JS_KEY		= <?php echo "'".P_JS_KEY."'"; ?>
-	
+	var js_cities = <?php echo json_encode($this->cities); ?>;
+	var js_company = <?php echo json_encode($this->comp_list); ?>;
+	var js_types = <?php echo json_encode($this->land_type); ?>;
+	var js_statues = <?php echo json_encode(lib::$land_for); ?>;
+	var js_adv = <?php echo json_encode(lib::$adv_type); ?>;
+	var js_config = <?php echo json_encode($this->conf_list); ?>;
+	var js_currency = <?php echo json_encode(lib::$currency); ?>;
+	var js_relation = <?php echo json_encode(lib::$land_relation); ?>;
+	var js_land = [];
+	var js_interface = <?php echo json_encode(lib::$land_interface); ?>;
+	var js_VIP_period = <?php echo session::get("VIP_PERIOD"); ?>;
+	var js_VIP_price = <?php echo session::get("VIP_PRICE"); ?>;
+	var js_price = [];
+
+	js_price["RENT_YEAR"] = <?php echo session::get("RENT_YEAR"); ?>;
+	js_price["RENT_DAY"] = <?php echo session::get("RENT_DAY"); ?>;
+	js_price["RENT_MONTH"] = <?php echo session::get("RENT_MONTH"); ?>;
+	js_price["SALE"] = <?php echo session::get("SALE"); ?>;
+	js_price["INVESTMENT"] = <?php echo session::get("INVESTMENT"); ?>;
+
+	var upg_pay = <?php echo (!empty($this->upgrade)) ? json_encode($this->upgrade) : "''"; ?>;
+	var JS_KEY = <?php echo "'" . P_JS_KEY . "'"; ?>
 </script>
