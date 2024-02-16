@@ -555,10 +555,10 @@
 								<div class="d-none err_notification" id="valid_request_air_cond">this field required</div>
 							</div>
 						</div>
-						<div class="form_msg d-none">تم حفط الطلب</div>
+						<div class="form_msg d-none">تم حفظ الطلب</div>
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفط الطلب</button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ الطلب</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
 					</div>
 				</div>
@@ -823,10 +823,10 @@
 								<div class="d-none err_notification" id="valid_upd_request_air_cond">this field required</div>
 							</div>
 						</div>
-						<div class="form_msg d-none">تم حفط الطلب</div>
+						<div class="form_msg d-none">تم حفظ الطلب</div>
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفط الطلب</button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ الطلب</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
 					</div>
 				</div>
@@ -875,7 +875,7 @@
 								<span class="sr-only">Loading...</span>
 							</div>
 						</div>
-						<div class="form_msg d-none">تم حفط العقار</div>
+						<div class="form_msg d-none">تم حفظ العقار</div>
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> بحث </button>
@@ -1111,7 +1111,6 @@
 							</div>
 						</div>
 
-						<!-- Additional rows for the new pieces of information -->
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
 								<label for="propertyFace" class="">واجهة العقار</label>
@@ -1119,7 +1118,7 @@
 							</div>
 							<div class="col-sm mb-3">
 								<label for="planNumber" class="">رقم المخطط</label>
-								<input type="text" lang="en" id="planNumber" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="رقم الخطة" readonly />
+								<input type="text" lang="en" id="planNumber" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="رقم المخطط" readonly />
 							</div>
 						</div>
 
@@ -1139,10 +1138,11 @@
 								<label for="theBordersAndLengthsOfTheProperty" class="">الحدود والأطوال للعقار</label>
 								<input type="text" lang="en" id="theBordersAndLengthsOfTheProperty" :value="api_land.theBordersAndLengthsOfTheProperty" class="form-control border border-primary rounded" placeholder="الحدود والأطوال للعقار" readonly />
 							</div>
+							<div class="col-sm mb-3">
+								<label for="complianceWithTheSaudiBuildingCode" class="">مطابقة كود البناء السعودي</label>
+								<input type="text" lang="en" id="complianceWithTheSaudiBuildingCode" :value="api_land.complianceWithTheSaudiBuildingCode" class="form-control border border-primary rounded" placeholder="مطابقة كود البناء السعودي" readonly />
+							</div>
 						</div>
-
-						<!-- The rest of the code remains unchanged -->
-
 
 
 						<div class="row align-items-center">
@@ -1459,10 +1459,10 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="form_msg d-none">تم حفط العقار</div>
+						<div class="form_msg d-none">تم حفظ العقار</div>
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفط العقار</button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
 					</div>
 				</div>
