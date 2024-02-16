@@ -1,0 +1,32 @@
+.w3-table {
+    overflow: scroll;
+	border: .5px solid gray;
+}
+ 
+td,th {
+	 border: .5px solid gray;
+}
+
+.header_img
+{
+	width: 70px;
+	height: 85px;
+}
+tr td.h_center{
+	padding-top: 30px;
+	border: 0;
+}
+tr td.no-b{
+	border: 0;
+}
+
+hr.style2 {
+	border-top: 1px solid #8c8b8b;
+	width: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

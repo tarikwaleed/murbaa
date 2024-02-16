@@ -1,0 +1,47 @@
+
+.blog-pagination {
+  color: #8795a4;
+}
+
+.blog-pagination ul {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.blog-pagination li {
+  border: 1px solid #edeff1;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.blog-pagination li.active {
+  background: white;
+}
+
+.blog-pagination li a {
+  color: #aaaaaa;
+  padding: 7px 16px;
+  display: inline-block;
+}
+
+.blog-pagination li.active, .blog-pagination li:hover {
+  background: #48c6ec;
+  border: 1px solid #48c6ec;
+}
+
+.blog-pagination li.active a, .blog-pagination li:hover a {
+  color: #fff;
+}
+
+.blog-pagination li.disabled {
+  background: #fff;
+  border: 1px solid white;
+}
+
+.blog-pagination li.disabled i {
+  color: #f1f1f1;
+  padding: 10px 16px;
+  display: inline-block;
+}
+
