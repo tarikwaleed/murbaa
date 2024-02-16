@@ -1143,6 +1143,23 @@
 								<input type="text" lang="en" id="complianceWithTheSaudiBuildingCode" :value="api_land.complianceWithTheSaudiBuildingCode" class="form-control border border-primary rounded" placeholder="مطابقة كود البناء السعودي" readonly />
 							</div>
 						</div>
+						<!-- Label for property utilities -->
+						<div class="row mt-2">
+							<div class="col-sm">
+								<label class="font-weight-bold">خدمات العقار</label>
+							</div>
+						</div>
+
+						<!-- List of property utilities -->
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<ul>
+									<!-- Loop through propertyUtilities array -->
+									<li v-for="utility in api_land.propertyUtilities">{{ utility }}</li>
+								</ul>
+							</div>
+						</div>
+
 
 
 						<div class="row align-items-center">
@@ -1155,602 +1172,602 @@
 							</div>
 						</div>
 
+					</div>
+
+					<div class="row clear_form_area" id="new_images_area"></div>
+					<div class="row">
+						<div class="col-sm  mb-3">
+							<label class="label-control"></label>
+							<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
 						</div>
-						
-						<div class="row clear_form_area" id="new_images_area"></div>
-						<div class="row">
-							<div class="col-sm  mb-3">
-								<label class="label-control"></label>
-								<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
-							</div>
-						</div>
-						<div class="row">
-							<table class="table table-bordered table-striped table-head-fixed text-right">
-								<thead class="text-light" style="background-color: rgb(220, 174, 95);">
-									<tr align="center">
-										<th><input type="checkbox" id='msgs' /></th>
-										<th>الصورة</th>
-										<th>الاسم</th>
-										<!--th>الهاتف</th>
+					</div>
+					<div class="row">
+						<table class="table table-bordered table-striped table-head-fixed text-right">
+							<thead class="text-light" style="background-color: rgb(220, 174, 95);">
+								<tr align="center">
+									<th><input type="checkbox" id='msgs' /></th>
+									<th>الصورة</th>
+									<th>الاسم</th>
+									<!--th>الهاتف</th>
 										<th>البريد الإلكتروني</th-->
-									</tr>
-								</thead>
-								<tbody>
-									<tr align="center" v-for="(x ,index) in company">
-										<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" /></td>
-										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
-										<td>{{x.NAME}}</td>
-										<!--td>{{x.PHONE}}</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr align="center" v-for="(x ,index) in company">
+									<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" /></td>
+									<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
+									<td>{{x.NAME}}</td>
+									<!--td>{{x.PHONE}}</td>
 										<td>{{x.EMAIL}}</td-->
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="form_msg d-none">تم حفظ العقار</div>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
-					</div>
+					<div class="form_msg d-none">تم حفظ العقار</div>
 				</div>
-			</form>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
+				</div>
 		</div>
+		</form>
 	</div>
+</div>
 
-	<!-- Modal For update land	-->
-	<div class="modal bd-example-modal-lg modal_with_form" id="upd_land">
-		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/upd_land" data-model="upd_land" data-type="upd_land">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> تعديل عقار</h5>
-						<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+<!-- Modal For update land	-->
+<div class="modal bd-example-modal-lg modal_with_form" id="upd_land">
+	<div class="modal-dialog modal-lg">
+		<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/upd_land" data-model="upd_land" data-type="upd_land">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> تعديل عقار</h5>
+					<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+				</div>
+				<div class="container"></div>
+				<div class="modal-body">
+					<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
+					<input type="hidden" class="" name="id" :value="upd_land.ID" />
+					<div v-if="upd_land.ADV_NO.length == 0" id="upd_map_area" class="map_area"></div>
+					<input type="hidden" lang="en" step="any" id="upd_lng" name="upd_lng" :value="upd_land.LOC_LNG" />
+					<input type="hidden" lang="en" step="any" id="upd_lat" name="upd_lat" :value="upd_land.LOC_LAT" />
+					<input type="hidden" lang="en" id="upd_location" name="upd_location" :value="upd_land.LOCATION" />
+					<div class="row">
+						<div class="col-sm mb-3">
+							<img id="upd_land_img" :src="upd_land.IMG" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
+						</div>
+						<div class="col-sm mb-3">
+							<input type="file" name="upd_land_img" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload image_upload form-control-file form-control-sm" data-id="upd_land_img" id="img" accept="image/*" />
+							<div class="d-none err_notification" id="valid_new_land_img">this field required</div>
+						</div>
 					</div>
-					<div class="container"></div>
-					<div class="modal-body">
-						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
-						<input type="hidden" class="" name="id" :value="upd_land.ID" />
-						<div v-if="upd_land.ADV_NO.length == 0" id="upd_map_area" class="map_area"></div>
-						<input type="hidden" lang="en" step="any" id="upd_lng" name="upd_lng" :value="upd_land.LOC_LNG" />
-						<input type="hidden" lang="en" step="any" id="upd_lat" name="upd_lat" :value="upd_land.LOC_LAT" />
-						<input type="hidden" lang="en" id="upd_location" name="upd_location" :value="upd_land.LOCATION" />
-						<div class="row">
-							<div class="col-sm mb-3">
-								<img id="upd_land_img" :src="upd_land.IMG" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
+
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_space" class="">المساحة</label>
+							<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_space" class="form-control" :value="upd_land.M_SIZE" placeholder="المساحة" required />
+							<div class="d-none err_notification" id="valid_upd_space">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_block" class="">المربع</label>
+							<input type="number" name="upd_block" class="form-control" placeholder="المربع" required :value="upd_land.BLOCK" />
+							<div class="d-none err_notification" id="valid_upd_block">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_no" class="">رقم العقار</label>
+							<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_no" class="form-control" :value="upd_land.NO" placeholder="رقم العقار" required />
+							<div class="d-none err_notification" id="valid_upd_no">this field required</div>
+							<div class="err_notification " id="duplicate_upd_no">البيانات المدخلة في هذا الحقل مدخلة من قبل</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_relation" class="">العلاقة بالعقار</label>
+							<select name="upd_relation" :readonly="upd_land.ADV_NO.length != 0" id="upd_relation" class="form-control" @change="onChangeRelation($event)">
+								<option v-for="(x,id) in relation" v-bind:value="id" v-bind:data-dele="x.del" :selected="id == upd_land.RELATION">{{x.NAME}}</option>
+							</select>
+							<div class="d-none err_notification" id="valid_upd_relation">this field required</div>
+						</div>
+						<div class="col-sm mb-3" v-if="delegate">
+							<label for="upd_relation_type" class="">نوع التفويض</label>
+							<select name="upd_relation_type" id="upd_relation_type" class="form-control" @change="onChangeRelation_type($event)">
+								<option value=""></option>
+								<option value="REG">تفويض من الهيئة العامة للعقار</option>
+								<option value="LOCAL">تفويض كتابي</option>
+							</select>
+							<div class="d-none err_notification" id="valid_new_relation_type">this field required</div>
+						</div>
+						<div class="col-sm mb-3" v-if="local_delegate == 'REG'">
+							<label for="new_type" class="">رقم التفويض</label>
+							<input type="text" id="upd_delegate" name="upd_delegate" :value="upd_land.DELEGATION" class="form-control" placeholder="رقم التفويض" required />
+							<div class="d-none err_notification" id="valid_upd_delegate">this field required</div>
+						</div>
+						<div class="col-sm mb-3" v-else-if="local_delegate == 'LOCAL'">
+							<label for="upd_delegate_file" class="">ملف التفويض <a v-if="upd_land.DELEGATE_FILE" :href="upd_land.DELEGATE_FILE" target="_blank">{{upd_land.DELEGATE_FILE_NAME}}</a></label>
+							<input type="file" name="upd_delegate_file" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
+							<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_desc" class="">وصف العقار</label>
+							<textarea name="upd_desc" class="form-control" placeholder="وصف العقار" required>{{upd_land.DESC}}</textarea>
+							<div class="d-none err_notification" id="valid_upd_desc">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_adv" class="">النوع الاعلان</label>
+							<select name="upd_adv" id="upd_adv" class="form-control">
+								<option v-for="(x,id) in adv" v-bind:value="id" :selected="id == upd_land.ADV">{{x}}</option>
+							</select>
+							<div class="d-none err_notification" id="valid_upd_adv">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_type" class="">النوع</label>
+							<select v-if="upd_land.ADV_NO.length == 0" name="upd_type" class="form-control" required @change="onChangeType($event,'upd_home_area','upd_farm_area')">
+								<option value="" selected disabled>اخترر النوع</option>
+								<option v-for="(x,id) in types" v-bind:value="x.ID" :selected="x.ID == upd_land.TYPE">{{x.NAME}}</option>
+							</select>
+							<template v-eles="">
+								<input type="hidden" name="upd_type" :value="upd_land.TYPE" />
+								{{types[upd_land.TYPE].NAME}}
+							</template>
+							<div class="d-none err_notification" id="valid_upd_type">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_for" class="">الغرض</label>
+							<select v-if="upd_land.ADV_NO.length == 0" name="upd_for" id="upd_for" class="form-control" required @change="onChangeFor($event,'upd_sails')">
+								<option value="" selected disabled>اختر الغرض</option>
+								<option v-for="(x,id) in statues" :value="id" :data-id="id" :selected="id == upd_land.FOR">{{x.NAME}}</option>
+							</select>
+							<template v-eles="">
+								<input type="hidden" name="upd_for" :value="upd_land.FOR" />
+								{{statues[upd_land.FOR].NAME}}
+							</template>
+							<div class="d-none err_notification" id="valid_new_for">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_price" class="">السعر</label>
+							<input type="number" lang="en" name="upd_price" class="form-control" :value="upd_land.UPD_PRICE" placeholder="السعر" required />
+							<div class="d-none err_notification" id="valid_upd_price">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_currency" class="">العملة</label>
+							<select name="upd_currency" class="form-control" required>
+								<option value="" selected disabled>اختر العملة</option>
+								<option v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
+							</select>
+							<div class="d-none err_notification" id="valid_upd_currency">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_interface" class="">واجهة</label>
+							<select v-if="upd_land.ADV_NO.length == 0" name="upd_interface" id="upd_interface" class="form-control">
+								<option value="" selected disabled>اختر الواجهة</option>
+								<option v-for="(x,id) in interf" v-bind:value="id" :selected="id == upd_land.INTERFACE">{{x}}</option>
+							</select>
+							<template v-eles="">
+								<input type="hidden" name="upd_interface" :value="upd_land.INTERFACE" />
+								{{interf[upd_land.INTERFACE]}}
+							</template>
+							<div class="d-none err_notification" id="valid_upd_interface">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_unit_no" class="">رقم الوحدة</label>
+							<input :readonly="upd_land.ADV_NO.length != 0" type="number" lang="en" id="upd_unit_no" name="upd_unit_no" class="form-control" placeholder="الوحدة" :value="upd_land.UNIT_NO" />
+							<div class="d-none err_notification" id="valid_upd_unit_no">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_year" class="">سنة التشييد</label>
+							<input type="date" :value="(upd_land.BULID == null)?0:upd_land.BULID" id="upd_year" name="upd_year" class="form-control" />
+							<div class="d-none err_notification" id="valid_upd_year">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3 upd_farm_area">
+							<label for="upd_tree" class="">عدد النخيل</label>
+							<input type="number" lang="en" id="upd_tree" name="upd_tree" :value="upd_land.TREES" class="form-control" placeholder="عدد النخيل" />
+							<div class="d-none err_notification" id="valid_upd_tree">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_farm_area">
+							<label for="upd_well" class="">عدد الابار: <span id="new_well_range_val">{{upd_land.WELL}}</span></label>
+							<input type="range" min="0" max="10" data-view="new_well_range_val" :value="(upd_land.WELL == null)?0:upd_land.ROOMS" id="upd_well" name="upd_well" class="form-control-range range_input" />
+							<div class="d-none err_notification" id="valid_upd_well">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_farm_area">
+							<label for="new_hall" class="">مشب: <span id="new_mushub_range_val">{{upd_land.MUSHUB}}</span></label>
+							<input type="range" min="0" max="10" data-view="new_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB" id="new_mushub" name="new_mushub" class="form-control-range range_input" />
+							<div class="d-none err_notification" id="valid_new_mushub">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_rooms" class="">عدد الغرف: <span id="upd_r_range_val">{{upd_land.ROOMS}}</span></label>
+							<input v-if="upd_land.ADV_NO.length == 0" type="range" min="0" max="80" data-view="upd_r_range_val" :value="(upd_land.ROOMS == null)?0:upd_land.ROOMS" id="upd_rooms" name="upd_rooms" class="form-control range_input" />
+							<input v-eles="" type="hidden" name="upd_rooms" :value="upd_land.ROOMS" />
+							<div class="d-none err_notification" id="valid_upd_rooms">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_bath" class="">عدد الحمامات: <span id="upd_bath_range_val">{{upd_land.BATHS}}</span></label>
+							<input type="range" min="0" max="80" data-view="upd_bath_range_val" :value="(upd_land.BATHS == null)?0:upd_land.BATHS" id="upd_bath" name="upd_bath" class="form-control range_input" />
+							<div class="d-none err_notification" id="valid_upd_bath">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_hall" class="">الصالات: <span id="upd_hall_range_val">{{upd_land.HALLS}}</span></label>
+							<input type="range" min="0" max="80" data-view="upd_hall_range_val" :value="(upd_land.HALLS == null)?0:upd_land.HALLS" id="upd_hall" name="upd_hall" class="form-control range_input" />
+							<div class="d-none err_notification" id="valid_upd_hall">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="new_unit_num" class="">عدد الوحدات: <span id="upd_unit_num_val">{{upd_land.UNIT_NUM}}</span></label>
+							<input type="range" min="1" max="80" step="1" data-view="upd_unit_num_val" name="upd_unit_nun" class="form-control-range range_input" :value="upd_land.UNIT_NUM" />
+							<div class="d-none err_notification" id="valid_new_unit_num">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_floor" class="">الطابق: <span id="upd_floor_range_val">{{upd_land.FLOOR}}</span></label>
+							<input type="range" min="0" max="80" data-view="upd_floor_range_val" :value="(upd_land.FLOOR == null)?0:upd_land.FLOOR" value="0" id="upd_floor" name="upd_floor" class="form-control range_input" />
+							<div class="d-none err_notification" id="valid_upd_floor">this field required</div>
+						</div>
+						<div class="col-sm mb-3">
+							<label for="upd_road" class="">عرض الشارع: <span id="upd_road_range_val">{{upd_land.ROAD}}</span></label>
+							<input v-if="upd_land.ADV_NO.length == 0" type="range" min="2" max="150" step="2" :value="(upd_land.ROAD == null)?0:upd_land.ROAD" data-view="upd_road_range_val" name="upd_road" id="upd_road" class="form-control range_input" />
+							<input v-eles="" type="hidden" name="upd_road" :value="upd_land.ROAD" />
+							<div class="d-none err_notification" id="valid_upd_road">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_car">
+								<input type="checkbox" id="upd_car" name="upd_car" :checked="upd_land.CARS == 1" value="1">
+								مواقف سيارات
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_car">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_duplex">
+								<input type="checkbox" id="upd_duplex" name="upd_duplex" value="1" :checked="upd_land.DUPLEX == 1">
+								دوبليكس
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_duplex">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_corner">
+								<input type="checkbox" id="upd_corner" name="upd_corner" :checked="1 == upd_land.CORNER" value="1">
+								زاوية
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_corner">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_append">
+								<input type="checkbox" id="upd_append" name="upd_append" :checked="upd_land.APPEND == 1" value="1">
+								ملحق
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_append">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_basment">
+								<input type="checkbox" id="upd_basment" name="upd_basment" :checked="upd_land.BASEMENT == 1" value="1">
+								بدروم
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_basment">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_monsters">
+								<input type="checkbox" id="upd_monsters" name="upd_monsters" :checked="upd_land.MONSTER == 1" value="1">
+								الحوش
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_monsters">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_swim">
+								<input type="checkbox" id="upd_swim" name="upd_swim" :checked="upd_land.SWIM == 1" value="1">
+								المسبح
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_swim">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_kitchen">
+								<input type="checkbox" id="upd_kitchen" name="upd_kitchen" :checked="upd_land.KITCHEN == 1" value="1">
+								المطبخ
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_kitchen">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_elevator">
+								<input type="checkbox" id="upd_elevator" name="upd_elevator" :checked="upd_land.ELEVATOR == 1" value="1">
+								المصعد
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_elevator">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_ser_room">
+								<input type="checkbox" id="upd_ser_room" name="upd_ser_room" :checked="upd_land.SER_ROOM == 1" value="1">
+								غرفة الخادم
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_ser_room">this field required</div>
+						</div>
+						<div class="col-sm mb-3 upd_home_area">
+							<label for="upd_dr_room">
+								<input type="checkbox" id="upd_dr_room" name="upd_dr_room" :checked="upd_land.DR_ROOM == 1" value="1">
+								غرفة السائق
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_dr_room">this field required</div>
+						</div>
+						<div class="col-sm mb-3 new_home_area">
+							<label for="upd_air_cond">
+								<input type="checkbox" id="upd_air_cond" name="upd_air_cond" :checked="upd_land.AIR_COND == 1" value="1">
+								التكييف
+								<span class="checkbox"></span>
+							</label>
+							<div class="d-none err_notification" id="valid_upd_air_cond">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_mortage" class="">هل يوجد الرهن أو القيد الذي يمنع او يحد من التصرف او الانتفاع من العقار؟</label>
+							<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_mortage" name="upd_mortage" class="form-control" placeholder="لا يوجد">{{upd_land.MORTGAGE}}</textarea>
+							<div class="d-none err_notification" id="valid_upd_mortage">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_law" class="">الحقوق والالتزامات على العقار الغير موثقة في وثيقة العقار</label>
+							<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_law" name="upd_law" class="form-control" placeholder="لا يوجد">{{upd_land.LAW}}</textarea>
+							<div class="d-none err_notification" id="valid_upd_law">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_info" class="">المعلومات التي قد تؤثر على العقار سواء في خفض قيمته او التأثير على قرار المستهدف بالإعلان</label>
+							<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_info" name="upd_info" class="form-control" placeholder="لا يوجد">{{upd_land.INFO}}</textarea>
+							<div class="d-none err_notification" id="valid_upd_info">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="upd_dispute" class=""> النزاعات القائمة على العقار</label>
+							<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_dispute" name="upd_dispute" class="form-control" placeholder="لا يوجد">{{upd_land.DISPUTES}}</textarea>
+							<div class="d-none err_notification" id="valid_upd_dispute">this field required</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-sm mb-3">
+							حدود واطوال العقار
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-sm-3 mb-3">
+							<label for="upd_des_n" class="">الطول من الشمال</label>
+							<input type="number" lang="en" id="upd_des_n" name="upd_des_n" class="form-control" :value="upd_land.DES_N" placeholder="الطول من الشمال" step="any" />
+							<div class="d-none err_notification" id="valid_upd_des_n">this field required</div>
+						</div>
+						<div class="col col-sm-3 mb-3">
+							<label for="upd_des_s" class="">الطول من الجنوب</label>
+							<input type="number" lang="en" id="upd_des_s" name="upd_des_s" class="form-control" :value="upd_land.DES_S" placeholder="الطول من الجنوب" step="any" />
+							<div class="d-none err_notification" id="valid_upd_des_s">this field required</div>
+						</div>
+						<div class="col col-sm-3 mb-3">
+							<label for="upd_des_e" class="">الطول من الشرق</label>
+							<input type="number" lang="en" id="upd_des_e" name="upd_des_e" class="form-control" :value="upd_land.DES_E" placeholder="الطول من الشرق" step="any" />
+							<div class="d-none err_notification" id="valid_upd_des_e">this field required</div>
+						</div>
+						<div class="col col-sm-3 mb-3">
+							<label for="upd_des_w" class="">الطول من الغرب</label>
+							<input type="number" lang="en" id="upd_des_w" name="upd_des_w" class="form-control" :value="upd_land.DES_W" placeholder="الطول من الغرب" step="any" />
+							<div class="d-none err_notification" id="valid_upd_des_w">this field required</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm  mb-3">
+							<label for="upd_file_image" class="label-control">المرفقات</label>
+							<input type="file" name="upd_file_image[]" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload multi_image_upload form-control-file" data-id="upd_images_area" multiple />
+							<div class="d-none err_notification" id="valid_upd_file_image">this field required</div>
+						</div>
+					</div>
+					<div class="row clear_form_area" id="upd_images_area"></div>
+					<div class="row clear_form_area">
+						<div class="col-sm mb-3" v-for="(img,img_index) in upd_land.OTHER_IMG">
+							<img :src="img.URL" width="100px" height="100px" class="img-thumbnail" alt="..." />
+							<div v-if="img.URL != upd_land.IMG">
+								<button type="button" class="btn btn-block btn-primary" v-on:click.prevent="del_upd_img(img_index)">حذف الصورة</button>
 							</div>
-							<div class="col-sm mb-3">
-								<input type="file" name="upd_land_img" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload image_upload form-control-file form-control-sm" data-id="upd_land_img" id="img" accept="image/*" />
-								<div class="d-none err_notification" id="valid_new_land_img">this field required</div>
-							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm  mb-3">
+							<label class="label-control"></label>
+							<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
+
+						</div>
+					</div>
+					<div class="row">
+						<table class="table table-bordered table-striped table-hover table-head-fixed text-right">
+							<thead>
+								<tr>
+									<th><input type="checkbox" id='msgs' /></th>
+									<th>الصورة</th>
+									<th>الاسم</th>
+									<!--th>الهاتف</th>
+										<th>البريد الإلكتروني</th-->
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="(x ,index) in company">
+									<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" :checked="upd_land.COMPANY.includes(x.ID)" /></td>
+									<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
+									<td>{{x.NAME}}</td>
+									<!--td>{{x.PHONE}}</td>
+										<td>{{x.EMAIL}}</td-->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form_msg d-none">تم تعديل العقار</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> تعديل العقار</button>
+					<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- Modal For delete land	-->
+<div class="modal bd-example-modal-lg modal_with_form" id="del_land">
+	<div class="modal-dialog modal-md">
+		<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/del_land" data-model="del_land" data-type="del_land">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><i class="fa fa-edit"></i> حذف عقار</h5>
+					<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+				</div>
+				<div class="container"></div>
+				<div class="modal-body">
+					<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
+					<input type="hidden" class="" name="id" :value="upd_land.ID" />
+					<div class="row">
+						<div class="col-sm mb-3">
+							<img id="upd_land_img" :src="upd_land.IMG" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							هل أنت متأكد أنك تريد مسح هذا الاعلان
+							<br />
+							{{upd_land.TYPE_NAME}} {{upd_land.FOR_NAME}} {{upd_land.CIT_NAME}} / {{upd_land.NEI_NAME}} / {{upd_land.BLOCK}}
+
+						</div>
+						<div class="col-sm mb-3">
+							إذا قمت بمسح الاعلان لن يتم استرجاع بياناته
 						</div>
 
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_space" class="">المساحة</label>
-								<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_space" class="form-control" :value="upd_land.M_SIZE" placeholder="المساحة" required />
-								<div class="d-none err_notification" id="valid_upd_space">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_block" class="">المربع</label>
-								<input type="number" name="upd_block" class="form-control" placeholder="المربع" required :value="upd_land.BLOCK" />
-								<div class="d-none err_notification" id="valid_upd_block">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_no" class="">رقم العقار</label>
-								<input type="number" :readonly="upd_land.ADV_NO.length != 0" lang="en" name="upd_no" class="form-control" :value="upd_land.NO" placeholder="رقم العقار" required />
-								<div class="d-none err_notification" id="valid_upd_no">this field required</div>
-								<div class="err_notification " id="duplicate_upd_no">البيانات المدخلة في هذا الحقل مدخلة من قبل</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_relation" class="">العلاقة بالعقار</label>
-								<select name="upd_relation" :readonly="upd_land.ADV_NO.length != 0" id="upd_relation" class="form-control" @change="onChangeRelation($event)">
-									<option v-for="(x,id) in relation" v-bind:value="id" v-bind:data-dele="x.del" :selected="id == upd_land.RELATION">{{x.NAME}}</option>
-								</select>
-								<div class="d-none err_notification" id="valid_upd_relation">this field required</div>
-							</div>
-							<div class="col-sm mb-3" v-if="delegate">
-								<label for="upd_relation_type" class="">نوع التفويض</label>
-								<select name="upd_relation_type" id="upd_relation_type" class="form-control" @change="onChangeRelation_type($event)">
-									<option value=""></option>
-									<option value="REG">تفويض من الهيئة العامة للعقار</option>
-									<option value="LOCAL">تفويض كتابي</option>
-								</select>
-								<div class="d-none err_notification" id="valid_new_relation_type">this field required</div>
-							</div>
-							<div class="col-sm mb-3" v-if="local_delegate == 'REG'">
-								<label for="new_type" class="">رقم التفويض</label>
-								<input type="text" id="upd_delegate" name="upd_delegate" :value="upd_land.DELEGATION" class="form-control" placeholder="رقم التفويض" required />
-								<div class="d-none err_notification" id="valid_upd_delegate">this field required</div>
-							</div>
-							<div class="col-sm mb-3" v-else-if="local_delegate == 'LOCAL'">
-								<label for="upd_delegate_file" class="">ملف التفويض <a v-if="upd_land.DELEGATE_FILE" :href="upd_land.DELEGATE_FILE" target="_blank">{{upd_land.DELEGATE_FILE_NAME}}</a></label>
-								<input type="file" name="upd_delegate_file" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
-								<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
-							</div>
-						</div>
+					</div>
+					<div class="form_msg d-none">تم مسح العقار</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> مسح العقار</button>
+					<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_desc" class="">وصف العقار</label>
-								<textarea name="upd_desc" class="form-control" placeholder="وصف العقار" required>{{upd_land.DESC}}</textarea>
-								<div class="d-none err_notification" id="valid_upd_desc">this field required</div>
-							</div>
+<!-- Modal For vip land	-->
+<div class="modal bd-example-modal-lg modal_with_form" id="vip_land">
+	<div class="modal-dialog modal-lg">
+		<form class="row g-3" id="vip_land_pay" method="post" action="<?php echo URL ?>my_land/upgrade" data-type="add">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 v-if="pay_form == 'VIP_BILL'" class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> ترقية العقار للباقة المميزة</h5>
+					<h5 v-if="pay_form == 'LAND_BILL'" class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> دفع عمولة الاعلان</h5>
+					<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+				</div>
+				<div class="container"></div>
+				<div class="modal-body">
+					<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
+					<input type="hidden" class="" name="id" :value="vip_land.ID" />
+					<div class="row mr-1">
+						<h5>{{vip_land.TYPE_NAME}} {{vip_land.FOR_NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
+					</div>
+					<input type="hidden" class="" name="type" :value="pay_form" />
+					<div class="row mr-1" v-if="vip_land.ID">
+						<h5>{{types[vip_land.TYPE].NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
+					</div>
+					<div class="row" v-if="pay_form == 'LAND_BILL' && vip_land.ID">
+						<div class="col-sm mb-3">
+							<label for="vip_price" class="">السعر</label>
+							<input v-if="vip_land.FOR == 'SALE'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['SALE']" placeholder="السعر" required />
+							<input v-else-if="vip_land.FOR == 'INVEST'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['INVESTMENT']" placeholder="السعر" required />
+							<input v-else-if="vip_land.FOR == 'RENT_D'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_DAY']" placeholder="السعر" required />
+							<input v-else-if="vip_land.FOR == 'RENT_M'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_MONTH']" placeholder="السعر" required />
+							<input v-else-if="vip_land.FOR == 'RENT_Y'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_YEAR']" placeholder="السعر" required />
+							<input v-else="" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" value="0" placeholder="السعر" required />
+							<div class="d-none err_notification" id="valid_upd_price">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_adv" class="">النوع الاعلان</label>
-								<select name="upd_adv" id="upd_adv" class="form-control">
-									<option v-for="(x,id) in adv" v-bind:value="id" :selected="id == upd_land.ADV">{{x}}</option>
-								</select>
-								<div class="d-none err_notification" id="valid_upd_adv">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_type" class="">النوع</label>
-								<select v-if="upd_land.ADV_NO.length == 0" name="upd_type" class="form-control" required @change="onChangeType($event,'upd_home_area','upd_farm_area')">
-									<option value="" selected disabled>اخترر النوع</option>
-									<option v-for="(x,id) in types" v-bind:value="x.ID" :selected="x.ID == upd_land.TYPE">{{x.NAME}}</option>
-								</select>
-								<template v-eles="">
-									<input type="hidden" name="upd_type" :value="upd_land.TYPE" />
-									{{types[upd_land.TYPE].NAME}}
-								</template>
-								<div class="d-none err_notification" id="valid_upd_type">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_for" class="">الغرض</label>
-								<select v-if="upd_land.ADV_NO.length == 0" name="upd_for" id="upd_for" class="form-control" required @change="onChangeFor($event,'upd_sails')">
-									<option value="" selected disabled>اختر الغرض</option>
-									<option v-for="(x,id) in statues" :value="id" :data-id="id" :selected="id == upd_land.FOR">{{x.NAME}}</option>
-								</select>
-								<template v-eles="">
-									<input type="hidden" name="upd_for" :value="upd_land.FOR" />
-									{{statues[upd_land.FOR].NAME}}
-								</template>
-								<div class="d-none err_notification" id="valid_new_for">this field required</div>
-							</div>
+					</div>
+					<div class="row my-2" v-if="pay_form == 'VIP_BILL'">
+						<div class="col-sm mb-3 new_home_area">
+							<label for="vip_range" class="">المدة: <span id="vip_range_val">{{VIP_period}}</span></label>
+							<input type="range" :min="VIP_period" max="365" :step="VIP_period" data-view="vip_range_val" :value="VIP_period" @change="vip_price_change" id="vip_range" name="vip_range" class="form-control range_input" />
+							<div class="d-none err_notification" id="valid_vip_range">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_price" class="">السعر</label>
-								<input type="number" lang="en" name="upd_price" class="form-control" :value="upd_land.UPD_PRICE" placeholder="السعر" required />
-								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_currency" class="">العملة</label>
-								<select name="upd_currency" class="form-control" required>
-									<option value="" selected disabled>اختر العملة</option>
-									<option v-for="(x,id) in currency" v-bind:value="x" :selected="id == upd_land.CURRENCY">{{x}}</option>
-								</select>
-								<div class="d-none err_notification" id="valid_upd_currency">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_interface" class="">واجهة</label>
-								<select v-if="upd_land.ADV_NO.length == 0" name="upd_interface" id="upd_interface" class="form-control">
-									<option value="" selected disabled>اختر الواجهة</option>
-									<option v-for="(x,id) in interf" v-bind:value="id" :selected="id == upd_land.INTERFACE">{{x}}</option>
-								</select>
-								<template v-eles="">
-									<input type="hidden" name="upd_interface" :value="upd_land.INTERFACE" />
-									{{interf[upd_land.INTERFACE]}}
-								</template>
-								<div class="d-none err_notification" id="valid_upd_interface">this field required</div>
-							</div>
+						<div class="col-sm mb-3">
+							<label for="vip_price" class="">السعر</label>
+							<input type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="VIP_price" placeholder="السعر" required />
+							<div class="d-none err_notification" id="valid_upd_price">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_unit_no" class="">رقم الوحدة</label>
-								<input :readonly="upd_land.ADV_NO.length != 0" type="number" lang="en" id="upd_unit_no" name="upd_unit_no" class="form-control" placeholder="الوحدة" :value="upd_land.UNIT_NO" />
-								<div class="d-none err_notification" id="valid_upd_unit_no">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_year" class="">سنة التشييد</label>
-								<input type="date" :value="(upd_land.BULID == null)?0:upd_land.BULID" id="upd_year" name="upd_year" class="form-control" />
-								<div class="d-none err_notification" id="valid_upd_year">this field required</div>
-							</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="vip_cobon" class="">رمز التخفيض</label>
+							<input type="text" lang="en" name="vip_cobon" id="vip_cobon" class="form-control" value="" placeholder="رمز التخفيض" @change="ch_cobon(event)" />
+							<div class="d-none err_notification" id="valid_upd_price">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3 upd_farm_area">
-								<label for="upd_tree" class="">عدد النخيل</label>
-								<input type="number" lang="en" id="upd_tree" name="upd_tree" :value="upd_land.TREES" class="form-control" placeholder="عدد النخيل" />
-								<div class="d-none err_notification" id="valid_upd_tree">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_farm_area">
-								<label for="upd_well" class="">عدد الابار: <span id="new_well_range_val">{{upd_land.WELL}}</span></label>
-								<input type="range" min="0" max="10" data-view="new_well_range_val" :value="(upd_land.WELL == null)?0:upd_land.ROOMS" id="upd_well" name="upd_well" class="form-control-range range_input" />
-								<div class="d-none err_notification" id="valid_upd_well">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_farm_area">
-								<label for="new_hall" class="">مشب: <span id="new_mushub_range_val">{{upd_land.MUSHUB}}</span></label>
-								<input type="range" min="0" max="10" data-view="new_mushub_range_val" :value="(upd_land.MUSHUB == null)?0:upd_land.MUSHUB" id="new_mushub" name="new_mushub" class="form-control-range range_input" />
-								<div class="d-none err_notification" id="valid_new_mushub">this field required</div>
-							</div>
+						<div class="col-sm mb-3">
+							<label for="vip_price" class="">مبلغ / نسبة التخفيض</label>
+							<input type="text" id="vip_discount" class="form-control" value="" readonly />
+							<div class="d-none err_notification" id="valid_upd_price">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_rooms" class="">عدد الغرف: <span id="upd_r_range_val">{{upd_land.ROOMS}}</span></label>
-								<input v-if="upd_land.ADV_NO.length == 0" type="range" min="0" max="80" data-view="upd_r_range_val" :value="(upd_land.ROOMS == null)?0:upd_land.ROOMS" id="upd_rooms" name="upd_rooms" class="form-control range_input" />
-								<input v-eles="" type="hidden" name="upd_rooms" :value="upd_land.ROOMS" />
-								<div class="d-none err_notification" id="valid_upd_rooms">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_bath" class="">عدد الحمامات: <span id="upd_bath_range_val">{{upd_land.BATHS}}</span></label>
-								<input type="range" min="0" max="80" data-view="upd_bath_range_val" :value="(upd_land.BATHS == null)?0:upd_land.BATHS" id="upd_bath" name="upd_bath" class="form-control range_input" />
-								<div class="d-none err_notification" id="valid_upd_bath">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_hall" class="">الصالات: <span id="upd_hall_range_val">{{upd_land.HALLS}}</span></label>
-								<input type="range" min="0" max="80" data-view="upd_hall_range_val" :value="(upd_land.HALLS == null)?0:upd_land.HALLS" id="upd_hall" name="upd_hall" class="form-control range_input" />
-								<div class="d-none err_notification" id="valid_upd_hall">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="new_unit_num" class="">عدد الوحدات: <span id="upd_unit_num_val">{{upd_land.UNIT_NUM}}</span></label>
-								<input type="range" min="1" max="80" step="1" data-view="upd_unit_num_val" name="upd_unit_nun" class="form-control-range range_input" :value="upd_land.UNIT_NUM" />
-								<div class="d-none err_notification" id="valid_new_unit_num">this field required</div>
-							</div>
+					</div>
+					<div class="row">
+						<div class="col-sm mb-3">
+							<label for="vip_card" class="">رقم البطاقة</label>
+							<input type="text" data-paylib="number" lang="en" dir="ltr" autocomplete="off" size="20" class="form-control" value="" placeholder="رقم البطاقة" />
+							<img src="https://iwebkit.net/wp-content/uploads/2021/06/mastercardandvisa.jpg" width="35%">
+							<img src="https://play-lh.googleusercontent.com/n8xRJaDMXDSw_103_w3T7sy1NaatwcXzh2h2gfXu7nRolieu2AsnvdEpgWV1aEMrRg" width="9%" class="mx-1">
+							<img src="https://cdn6.aptoide.com/imgs/1/c/d/1cd63acc2107c45813ec3bb88180afaa_icon.png" width="20%" class="mx-1">
+							<div class="d-none err_notification" id="valid_vip_card">this field required</div>
 						</div>
-						<div class="row">
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_floor" class="">الطابق: <span id="upd_floor_range_val">{{upd_land.FLOOR}}</span></label>
-								<input type="range" min="0" max="80" data-view="upd_floor_range_val" :value="(upd_land.FLOOR == null)?0:upd_land.FLOOR" value="0" id="upd_floor" name="upd_floor" class="form-control range_input" />
-								<div class="d-none err_notification" id="valid_upd_floor">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="upd_road" class="">عرض الشارع: <span id="upd_road_range_val">{{upd_land.ROAD}}</span></label>
-								<input v-if="upd_land.ADV_NO.length == 0" type="range" min="2" max="150" step="2" :value="(upd_land.ROAD == null)?0:upd_land.ROAD" data-view="upd_road_range_val" name="upd_road" id="upd_road" class="form-control range_input" />
-								<input v-eles="" type="hidden" name="upd_road" :value="upd_land.ROAD" />
-								<div class="d-none err_notification" id="valid_upd_road">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_car">
-									<input type="checkbox" id="upd_car" name="upd_car" :checked="upd_land.CARS == 1" value="1">
-									مواقف سيارات
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_car">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_duplex">
-									<input type="checkbox" id="upd_duplex" name="upd_duplex" value="1" :checked="upd_land.DUPLEX == 1">
-									دوبليكس
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_duplex">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_corner">
-									<input type="checkbox" id="upd_corner" name="upd_corner" :checked="1 == upd_land.CORNER" value="1">
-									زاوية
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_corner">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_append">
-									<input type="checkbox" id="upd_append" name="upd_append" :checked="upd_land.APPEND == 1" value="1">
-									ملحق
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_append">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_basment">
-									<input type="checkbox" id="upd_basment" name="upd_basment" :checked="upd_land.BASEMENT == 1" value="1">
-									بدروم
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_basment">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_monsters">
-									<input type="checkbox" id="upd_monsters" name="upd_monsters" :checked="upd_land.MONSTER == 1" value="1">
-									الحوش
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_monsters">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_swim">
-									<input type="checkbox" id="upd_swim" name="upd_swim" :checked="upd_land.SWIM == 1" value="1">
-									المسبح
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_swim">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_kitchen">
-									<input type="checkbox" id="upd_kitchen" name="upd_kitchen" :checked="upd_land.KITCHEN == 1" value="1">
-									المطبخ
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_kitchen">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_elevator">
-									<input type="checkbox" id="upd_elevator" name="upd_elevator" :checked="upd_land.ELEVATOR == 1" value="1">
-									المصعد
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_elevator">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_ser_room">
-									<input type="checkbox" id="upd_ser_room" name="upd_ser_room" :checked="upd_land.SER_ROOM == 1" value="1">
-									غرفة الخادم
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_ser_room">this field required</div>
-							</div>
-							<div class="col-sm mb-3 upd_home_area">
-								<label for="upd_dr_room">
-									<input type="checkbox" id="upd_dr_room" name="upd_dr_room" :checked="upd_land.DR_ROOM == 1" value="1">
-									غرفة السائق
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_dr_room">this field required</div>
-							</div>
-							<div class="col-sm mb-3 new_home_area">
-								<label for="upd_air_cond">
-									<input type="checkbox" id="upd_air_cond" name="upd_air_cond" :checked="upd_land.AIR_COND == 1" value="1">
-									التكييف
-									<span class="checkbox"></span>
-								</label>
-								<div class="d-none err_notification" id="valid_upd_air_cond">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_mortage" class="">هل يوجد الرهن أو القيد الذي يمنع او يحد من التصرف او الانتفاع من العقار؟</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_mortage" name="upd_mortage" class="form-control" placeholder="لا يوجد">{{upd_land.MORTGAGE}}</textarea>
-								<div class="d-none err_notification" id="valid_upd_mortage">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_law" class="">الحقوق والالتزامات على العقار الغير موثقة في وثيقة العقار</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_law" name="upd_law" class="form-control" placeholder="لا يوجد">{{upd_land.LAW}}</textarea>
-								<div class="d-none err_notification" id="valid_upd_law">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_info" class="">المعلومات التي قد تؤثر على العقار سواء في خفض قيمته او التأثير على قرار المستهدف بالإعلان</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_info" name="upd_info" class="form-control" placeholder="لا يوجد">{{upd_land.INFO}}</textarea>
-								<div class="d-none err_notification" id="valid_upd_info">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="upd_dispute" class=""> النزاعات القائمة على العقار</label>
-								<textarea :readonly="upd_land.ADV_NO.length != 0" type="text" id="upd_dispute" name="upd_dispute" class="form-control" placeholder="لا يوجد">{{upd_land.DISPUTES}}</textarea>
-								<div class="d-none err_notification" id="valid_upd_dispute">this field required</div>
-							</div>
-						</div>
-						<div class="row ">
-							<div class="col-sm mb-3">
-								حدود واطوال العقار
-							</div>
-						</div>
-						<div class="row">
-							<div class="col col-sm-3 mb-3">
-								<label for="upd_des_n" class="">الطول من الشمال</label>
-								<input type="number" lang="en" id="upd_des_n" name="upd_des_n" class="form-control" :value="upd_land.DES_N" placeholder="الطول من الشمال" step="any" />
-								<div class="d-none err_notification" id="valid_upd_des_n">this field required</div>
-							</div>
-							<div class="col col-sm-3 mb-3">
-								<label for="upd_des_s" class="">الطول من الجنوب</label>
-								<input type="number" lang="en" id="upd_des_s" name="upd_des_s" class="form-control" :value="upd_land.DES_S" placeholder="الطول من الجنوب" step="any" />
-								<div class="d-none err_notification" id="valid_upd_des_s">this field required</div>
-							</div>
-							<div class="col col-sm-3 mb-3">
-								<label for="upd_des_e" class="">الطول من الشرق</label>
-								<input type="number" lang="en" id="upd_des_e" name="upd_des_e" class="form-control" :value="upd_land.DES_E" placeholder="الطول من الشرق" step="any" />
-								<div class="d-none err_notification" id="valid_upd_des_e">this field required</div>
-							</div>
-							<div class="col col-sm-3 mb-3">
-								<label for="upd_des_w" class="">الطول من الغرب</label>
-								<input type="number" lang="en" id="upd_des_w" name="upd_des_w" class="form-control" :value="upd_land.DES_W" placeholder="الطول من الغرب" step="any" />
-								<div class="d-none err_notification" id="valid_upd_des_w">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm  mb-3">
-								<label for="upd_file_image" class="label-control">المرفقات</label>
-								<input type="file" name="upd_file_image[]" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload multi_image_upload form-control-file" data-id="upd_images_area" multiple />
-								<div class="d-none err_notification" id="valid_upd_file_image">this field required</div>
-							</div>
-						</div>
-						<div class="row clear_form_area" id="upd_images_area"></div>
-						<div class="row clear_form_area">
-							<div class="col-sm mb-3" v-for="(img,img_index) in upd_land.OTHER_IMG">
-								<img :src="img.URL" width="100px" height="100px" class="img-thumbnail" alt="..." />
-								<div v-if="img.URL != upd_land.IMG">
-									<button type="button" class="btn btn-block btn-primary" v-on:click.prevent="del_upd_img(img_index)">حذف الصورة</button>
+						<div class="col-sm mb-3">
+							<label>تاريخ انتهاء الصلاحية (YYYY/MM)</label>
+							<div class="row">
+								<div class="col-sm mb-3 d-flex">
+									<input type="text" class="form-control" data-paylib="expmonth" autocomplete="off" size="3" placeholder="الشهر">
+									<input type="text" class="form-control" data-paylib="expyear" autocomplete="off" size="5" placeholder="السنة">
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm  mb-3">
-								<label class="label-control"></label>
-								<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
-
-							</div>
+						<div class="col-sm mb-3">
+							<label for="vip_pass" class="">رقم CVV</label>
+							<input type="text" lang="en" data-paylib="cvv" size="4" class="form-control" value="" placeholder="CVV" />
+							<div class="d-none err_notification" lang="en" autocomplete="off" id="valid_vip_pass">this field required</div>
 						</div>
-						<div class="row">
-							<table class="table table-bordered table-striped table-hover table-head-fixed text-right">
-								<thead>
-									<tr>
-										<th><input type="checkbox" id='msgs' /></th>
-										<th>الصورة</th>
-										<th>الاسم</th>
-										<!--th>الهاتف</th>
-										<th>البريد الإلكتروني</th-->
-									</tr>
-								</thead>
-								<tbody>
-									<tr v-for="(x ,index) in company">
-										<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" :checked="upd_land.COMPANY.includes(x.ID)" /></td>
-										<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
-										<td>{{x.NAME}}</td>
-										<!--td>{{x.PHONE}}</td>
-										<td>{{x.EMAIL}}</td-->
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="form_msg d-none">تم تعديل العقار</div>
-
 					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> تعديل العقار</button>
-						<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
-					</div>
+					<div class="row" id="vip_land_pay_error"></div>
+					<div class="form_msg d-none">تمت إضافة العقار للباقة المميزة</div>
 				</div>
-			</form>
-		</div>
-	</div>
-
-	<!-- Modal For delete land	-->
-	<div class="modal bd-example-modal-lg modal_with_form" id="del_land">
-		<div class="modal-dialog modal-md">
-			<form class="row g-3 model_form" id="upd_land_form" method="post" action="<?php echo URL ?>my_land/del_land" data-model="del_land" data-type="del_land">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title"><i class="fa fa-edit"></i> حذف عقار</h5>
-						<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
-					</div>
-					<div class="container"></div>
-					<div class="modal-body">
-						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
-						<input type="hidden" class="" name="id" :value="upd_land.ID" />
-						<div class="row">
-							<div class="col-sm mb-3">
-								<img id="upd_land_img" :src="upd_land.IMG" width="150px" height="150px" class="img-thumbnail mb-1" alt="الصورة">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								هل أنت متأكد أنك تريد مسح هذا الاعلان
-								<br />
-								{{upd_land.TYPE_NAME}} {{upd_land.FOR_NAME}} {{upd_land.CIT_NAME}} / {{upd_land.NEI_NAME}} / {{upd_land.BLOCK}}
-
-							</div>
-							<div class="col-sm mb-3">
-								إذا قمت بمسح الاعلان لن يتم استرجاع بياناته
-							</div>
-
-						</div>
-						<div class="form_msg d-none">تم مسح العقار</div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> مسح العقار</button>
-						<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
-					</div>
+				<div class="modal-footer">
+					<button v-if="pay_form == 'VIP_BILL'" type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> دفع عمولة الترقية</button>
+					<button v-if="pay_form == 'LAND_BILL'" type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> دفع العمولة</button>
+					<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
+</div>
 
-	<!-- Modal For vip land	-->
-	<div class="modal bd-example-modal-lg modal_with_form" id="vip_land">
-		<div class="modal-dialog modal-lg">
-			<form class="row g-3" id="vip_land_pay" method="post" action="<?php echo URL ?>my_land/upgrade" data-type="add">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 v-if="pay_form == 'VIP_BILL'" class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> ترقية العقار للباقة المميزة</h5>
-						<h5 v-if="pay_form == 'LAND_BILL'" class="modal-title" id="upd_land_title"><i class="fa fa-edit"></i> دفع عمولة الاعلان</h5>
-						<button type="button" class="btn-close btn p-0 bg-white" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
-					</div>
-					<div class="container"></div>
-					<div class="modal-body">
-						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
-						<input type="hidden" class="" name="id" :value="vip_land.ID" />
-						<div class="row mr-1">
-							<h5>{{vip_land.TYPE_NAME}} {{vip_land.FOR_NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
-						</div>
-						<input type="hidden" class="" name="type" :value="pay_form" />
-						<div class="row mr-1" v-if="vip_land.ID">
-							<h5>{{types[vip_land.TYPE].NAME}} {{vip_land.CIT_NAME}} / {{vip_land.NEI_NAME}} / {{vip_land.BLOCK}}</h5>
-						</div>
-						<div class="row" v-if="pay_form == 'LAND_BILL' && vip_land.ID">
-							<div class="col-sm mb-3">
-								<label for="vip_price" class="">السعر</label>
-								<input v-if="vip_land.FOR == 'SALE'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['SALE']" placeholder="السعر" required />
-								<input v-else-if="vip_land.FOR == 'INVEST'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['INVESTMENT']" placeholder="السعر" required />
-								<input v-else-if="vip_land.FOR == 'RENT_D'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_DAY']" placeholder="السعر" required />
-								<input v-else-if="vip_land.FOR == 'RENT_M'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_MONTH']" placeholder="السعر" required />
-								<input v-else-if="vip_land.FOR == 'RENT_Y'" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="land_price['RENT_YEAR']" placeholder="السعر" required />
-								<input v-else="" type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" value="0" placeholder="السعر" required />
-								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>
-						</div>
-						<div class="row my-2" v-if="pay_form == 'VIP_BILL'">
-							<div class="col-sm mb-3 new_home_area">
-								<label for="vip_range" class="">المدة: <span id="vip_range_val">{{VIP_period}}</span></label>
-								<input type="range" :min="VIP_period" max="365" :step="VIP_period" data-view="vip_range_val" :value="VIP_period" @change="vip_price_change" id="vip_range" name="vip_range" class="form-control range_input" />
-								<div class="d-none err_notification" id="valid_vip_range">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="vip_price" class="">السعر</label>
-								<input type="number" readonly lang="en" name="vip_price" id="vip_price" class="form-control" :value="VIP_price" placeholder="السعر" required />
-								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="vip_cobon" class="">رمز التخفيض</label>
-								<input type="text" lang="en" name="vip_cobon" id="vip_cobon" class="form-control" value="" placeholder="رمز التخفيض" @change="ch_cobon(event)" />
-								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="vip_price" class="">مبلغ / نسبة التخفيض</label>
-								<input type="text" id="vip_discount" class="form-control" value="" readonly />
-								<div class="d-none err_notification" id="valid_upd_price">this field required</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm mb-3">
-								<label for="vip_card" class="">رقم البطاقة</label>
-								<input type="text" data-paylib="number" lang="en" dir="ltr" autocomplete="off" size="20" class="form-control" value="" placeholder="رقم البطاقة" />
-								<img src="https://iwebkit.net/wp-content/uploads/2021/06/mastercardandvisa.jpg" width="35%">
-								<img src="https://play-lh.googleusercontent.com/n8xRJaDMXDSw_103_w3T7sy1NaatwcXzh2h2gfXu7nRolieu2AsnvdEpgWV1aEMrRg" width="9%" class="mx-1">
-								<img src="https://cdn6.aptoide.com/imgs/1/c/d/1cd63acc2107c45813ec3bb88180afaa_icon.png" width="20%" class="mx-1">
-								<div class="d-none err_notification" id="valid_vip_card">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label>تاريخ انتهاء الصلاحية (YYYY/MM)</label>
-								<div class="row">
-									<div class="col-sm mb-3 d-flex">
-										<input type="text" class="form-control" data-paylib="expmonth" autocomplete="off" size="3" placeholder="الشهر">
-										<input type="text" class="form-control" data-paylib="expyear" autocomplete="off" size="5" placeholder="السنة">
-									</div>
-								</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="vip_pass" class="">رقم CVV</label>
-								<input type="text" lang="en" data-paylib="cvv" size="4" class="form-control" value="" placeholder="CVV" />
-								<div class="d-none err_notification" lang="en" autocomplete="off" id="valid_vip_pass">this field required</div>
-							</div>
-						</div>
-						<div class="row" id="vip_land_pay_error"></div>
-						<div class="form_msg d-none">تمت إضافة العقار للباقة المميزة</div>
-					</div>
-					<div class="modal-footer">
-						<button v-if="pay_form == 'VIP_BILL'" type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> دفع عمولة الترقية</button>
-						<button v-if="pay_form == 'LAND_BILL'" type="submit" class="btn btn-primary mb-3"><i class="fa fa-save"></i> دفع العمولة</button>
-						<button type="button" class="btn btn-secondary mb-3" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
-	<!-- Modal For price land ---	->
+<!-- Modal For price land ---	->
 	<div class="modal bd-example-modal-lg modal_with_form" id="land_price" >
 		<div class="modal-dialog modal-lg">
 			<form class="row g-3" id="land_bill_form" method="post" action="<?php echo URL ?>my_land/land_bill"  data-type="add">
