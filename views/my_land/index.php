@@ -1050,6 +1050,10 @@
 								<label for="region" class="">المنطقة</label>
 								<input type="text" lang="en" id="region" :value="api_land.location.region" class="form-control border border-primary rounded" placeholder="المنطقة" readonly />
 							</div>
+							<div class="col-sm mb-3">
+								<label for="regionCode" class="">كود المنطقة</label>
+								<input type="text" lang="en" id="regionCode" :value="api_land.location.regionCode" class="form-control border border-primary rounded" placeholder="كود المنطقة" readonly />
+							</div>
 						</div>
 
 						<div class="row mt-2">
@@ -1058,8 +1062,19 @@
 								<input type="text" lang="en" id="city" :value="api_land.location.city" class="form-control border border-primary rounded" placeholder="المدينة" readonly />
 							</div>
 							<div class="col-sm mb-3">
+								<label for="cityCode" class="">كود المدينة</label>
+								<input type="text" lang="en" id="cityCode" :value="api_land.location.cityCode" class="form-control border border-primary rounded" placeholder="كود المدينة" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
 								<label for="district" class="">الحي</label>
 								<input type="text" lang="en" id="district" :value="api_land.location.district" class="form-control border border-primary rounded" placeholder="الحي" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="districtCode" class="">كود الحي</label>
+								<input type="text" lang="en" id="districtCode" :value="api_land.location.districtCode" class="form-control border border-primary rounded" placeholder="كود الحي" readonly />
 							</div>
 						</div>
 
