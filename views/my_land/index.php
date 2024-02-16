@@ -1037,6 +1037,65 @@
 								<input type="text" lang="en" id="advertisementType" :value="api_land.advertisementType" class="form-control border border-primary rounded" placeholder="نوع الإعلان" readonly />
 							</div>
 						</div>
+						<!-- Label for the location section -->
+						<div class="row mt-3">
+							<div class="col-sm">
+								<label class="font-weight-bold">المنطقة</label>
+							</div>
+						</div>
+
+						<!-- Rows for location details -->
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="region" class="">المنطقة</label>
+								<input type="text" lang="en" id="region" :value="api_land.location.region" class="form-control border border-primary rounded" placeholder="المنطقة" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="city" class="">المدينة</label>
+								<input type="text" lang="en" id="city" :value="api_land.location.city" class="form-control border border-primary rounded" placeholder="المدينة" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="district" class="">الحي</label>
+								<input type="text" lang="en" id="district" :value="api_land.location.district" class="form-control border border-primary rounded" placeholder="الحي" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="street" class="">الشارع</label>
+								<input type="text" lang="en" id="street" :value="api_land.location.street" class="form-control border border-primary rounded" placeholder="الشارع" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="postalCode" class="">الرمز البريدي</label>
+								<input type="text" lang="en" id="postalCode" :value="api_land.location.postalCode" class="form-control border border-primary rounded" placeholder="الرمز البريدي" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="buildingNumber" class="">رقم المبنى</label>
+								<input type="text" lang="en" id="buildingNumber" :value="api_land.location.buildingNumber" class="form-control border border-primary rounded" placeholder="رقم المبنى" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="additionalNumber" class="">الرقم الإضافي</label>
+								<input type="text" lang="en" id="additionalNumber" :value="api_land.location.additionalNumber" class="form-control border border-primary rounded" placeholder="الرقم الإضافي" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="longitude" class="">خط الطول</label>
+								<input type="text" lang="en" id="longitude" :value="api_land.location.longitude" class="form-control border border-primary rounded" placeholder="خط الطول" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="latitude" class="">خط العرض</label>
+								<input type="text" lang="en" id="latitude" :value="api_land.location.latitude" class="form-control border border-primary rounded" placeholder="خط العرض" readonly />
+							</div>
+						</div>
+
 
 
 						<div class="row align-items-center">
