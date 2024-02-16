@@ -960,7 +960,8 @@
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
 								<label for="isConstrained">Is Constrained</label>
-								<input type="checkbox" id="isConstrained" name="isConstrained" {{api_land.isConstrained ? 'checked' : ''}} disabled>
+								<input type="checkbox" id="isConstrained" name="isConstrained" :value="api_land.isConstrained"  >
+								<input type="number" lang="en" id="new_no" name="new_no" :value="api_land.location.buildingNumber" class="form-control border border-primary rounded" placeholder="رقم العقار" required />
 							</div>
 							<div class="col-sm mb-3">
 								<label for="isPawned">Is Pawned</label>
