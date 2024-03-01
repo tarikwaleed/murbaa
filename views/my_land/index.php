@@ -1140,21 +1140,20 @@
 					</div>
 
 					<div class="row clear_form_area" id="new_images_area"></div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-sm  mb-3">
 							<label class="label-control"></label>
 							<label class="label-control">قم بإختيار الجهات التي تريد ان يكون الاعلان محدد لها او لا تختار اي جهة ليبقى اعلان عام</label>
 						</div>
-					</div>
-					<div class="row">
+					</div> -->
+
+					<!-- <div class="row">
 						<table class="table table-bordered table-striped table-head-fixed text-right">
 							<thead class="text-light" style="background-color: rgb(220, 174, 95);">
 								<tr align="center">
 									<th><input type="checkbox" id='msgs' /></th>
 									<th>الصورة</th>
 									<th>الاسم</th>
-									<!--th>الهاتف</th>
-										<th>البريد الإلكتروني</th-->
 								</tr>
 							</thead>
 							<tbody>
@@ -1162,12 +1161,10 @@
 									<td><input type="checkbox" name="company[]" class="msgs" :value="x.ID" /></td>
 									<td><img v-bind:src="x.IMG" class="img-thumbnail rounded-circle" width="50px" height="50px" alt="100x100" /></td>
 									<td>{{x.NAME}}</td>
-									<!--td>{{x.PHONE}}</td>
-										<td>{{x.EMAIL}}</td-->
 								</tr>
 							</tbody>
 						</table>
-					</div>
+					</div> -->
 					<div class="form_msg d-none">تم حفظ العقار</div>
 				</div>
 
