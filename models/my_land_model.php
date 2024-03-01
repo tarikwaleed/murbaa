@@ -1162,7 +1162,7 @@ class my_land_model extends model
 
 
 		//insert
-		$this->db->insert(DB_PREFEX . 'land', $land);
+		$this->db->insert(DB_PREFEX . 'land2', $land);
 		$id = $this->db->LastInsertedId();
 
 		$files	= new files();
