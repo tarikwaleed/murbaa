@@ -969,36 +969,36 @@
 								<input type="checkbox" id="is-constrained" name="is-constrained" :value="api_land.isConstrained">
 							</div>
 							<div class="col-sm mb-3">
-								<label for="isPawned">وجود رهن؟</label>
-								<input type="checkbox" id="isPawned" name="isPawned" :value="api_land.isPawned">
+								<label for="is-pawned">وجود رهن؟</label>
+								<input type="checkbox" id="is-pawned" name="is-pawned" :value="api_land.isPawned">
 							</div>
 						</div>
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="streetWidth" class="">عرض الشارع</label>
-								<input type="number" lang="en" id="streetWidth" :value="api_land.streetWidth" class="form-control border border-primary rounded" placeholder="عرض الشارع" readonly />
+								<label for="street-width" class="">عرض الشارع</label>
+								<input type="number" lang="en" id="street-width" :value="api_land.streetWidth" class="form-control border border-primary rounded" placeholder="عرض الشارع" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="propertyArea" class="">المساحة</label>
-								<input type="number" lang="en" step="any" id="propertyArea" :value="api_land.propertyArea" class="form-control border border-primary rounded" placeholder="المساحة" readonly />
+								<label for="property-area" class="">المساحة</label>
+								<input type="number" lang="en" step="any" id="property-area" :value="api_land.propertyArea" class="form-control border border-primary rounded" placeholder="المساحة" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="propertyPrice" class="">سعر العقار</label>
-								<input type="number" lang="en" step="any" id="propertyPrice" :value="api_land.propertyPrice" class="form-control border border-primary rounded" placeholder="سعر العقار" readonly />
+								<label for="property-price" class="">سعر العقار</label>
+								<input type="number" lang="en" step="any" id="property-price" :value="api_land.propertyPrice" class="form-control border border-primary rounded" placeholder="سعر العقار" readonly />
 							</div>
 						</div>
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="numberOfRooms" class="">عدد الغرف</label>
-								<input type="number" lang="en" id="numberOfRooms" :value="api_land.numberOfRooms" class="form-control border border-primary rounded" placeholder="عدد الغرف" readonly />
+								<label for="number-of-rooms" class="">عدد الغرف</label>
+								<input type="number" lang="en" id="number-of-rooms" :value="api_land.numberOfRooms" class="form-control border border-primary rounded" placeholder="عدد الغرف" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="propertyType" class="">نوع العقار</label>
-								<input type="text" lang="en" id="propertyType" :value="api_land.propertyType" class="form-control border border-primary rounded" placeholder="نوع العقار" readonly />
+								<label for="property-type" class="">نوع العقار</label>
+								<input type="text" lang="en" id="property-type" :value="api_land.propertyType" class="form-control border border-primary rounded" placeholder="نوع العقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="propertyAge" class="">عمر العقار</label>
-								<input type="text" lang="en" id="propertyAge" :value="api_land.propertyAge" class="form-control border border-primary rounded" placeholder="عمر العقار" readonly />
+								<label for="property-age" class="">عمر العقار</label>
+								<input type="text" lang="en" id="property-age" :value="api_land.propertyAge" class="form-control border border-primary rounded" placeholder="عمر العقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
 								<label for="advertisementType" class="">نوع الإعلان</label>
