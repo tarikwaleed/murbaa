@@ -1104,11 +1104,11 @@
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
 								<label for="the-borders-and-lengths-of-the-property" class="">الحدود والأطوال للعقار</label>
-								<input type="text" lang="en" id="theBordersAndLengthsOfTheProperty" :value="api_land.theBordersAndLengthsOfTheProperty" class="form-control border border-primary rounded" placeholder="الحدود والأطوال للعقار" readonly />
+								<input type="text" lang="en" id="the-borders-and-lengths-of-the-property" :value="api_land.theBordersAndLengthsOfTheProperty" class="form-control border border-primary rounded" placeholder="الحدود والأطوال للعقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="complianceWithTheSaudiBuildingCode" class="">مطابقة كود البناء السعودي</label>
-								<input type="text" lang="en" id="complianceWithTheSaudiBuildingCode" :value="api_land.complianceWithTheSaudiBuildingCode" class="form-control border border-primary rounded" placeholder="مطابقة كود البناء السعودي" readonly />
+								<label for="compliance-with-the-saudi-building-code" class="">مطابقة كود البناء السعودي</label>
+								<input type="text" lang="en" id="compliance-with-the-saudi-building-code" :value="api_land.complianceWithTheSaudiBuildingCode" class="form-control border border-primary rounded" placeholder="مطابقة كود البناء السعودي" readonly />
 							</div>
 						</div>
 
