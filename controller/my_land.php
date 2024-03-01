@@ -57,6 +57,10 @@
 		    }
 		    echo json_encode($this->model->new_api_land());
 		}
+		function new_land2()
+		{
+			echo "hello";
+		}
 		
 		//Update upd_request
 		function upd_request()

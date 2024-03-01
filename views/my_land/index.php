@@ -889,7 +889,7 @@
 	<!-- Modal For add new land -->
 	<div class="modal bd-example-modal-lg modal_with_form" id="new_land">
 		<div class="modal-dialog modal-lg">
-			<form class="row g-3 model_form" id="new_staff_form" method="post" action="<?php echo URL ?>my_land/new_land" data-model="new_land" data-type="new_land">
+			<form class="row g-3 model_form" id="new_staff_form" method="post" action="<?php echo URL ?>my_land/new_land2" data-model="new_land" data-type="new_land">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="new_land_title"><i class="fa fa-plus"></i> إضافة عقار</h5>
@@ -897,36 +897,6 @@
 					</div>
 					<div class="container"></div>
 					<div class="modal-body">
-						<!--
-					    $land['l_adv']          = "ADV";
-			$land['l_neighborhood'] = $result['location']['districtCode'];
-			
-			$land['l_street']       = $result['location']['street'];
-			$land['l_unit_no']      = $result['location']['additionalNumber'];
-			$land['l_no']           = $result['location']['buildingNumber'];
-			$land['l_block']        = $result['planNumber'];
-			$land['l_street_width'] = $result['streetWidth'];
-			
-			$land['l_mortgage'] 	= (!empty($result['isPawned']) && $result['isPawned'] != 'false' && $result['isPawned'] != false )?$result['isPawned']:null;
-			$land['l_law'] 	        = (!empty($result['isConstrained']) && $result['isConstrained'] != 'false' && $result['isConstrained'] != false )?$result['isConstrained']:null;
-			$land['l_disputes'] 	= (!empty($result['obligationsOnTheProperty']) && $result['obligationsOnTheProperty'] != 'false' && $result['obligationsOnTheProperty'] != false )?$result['obligationsOnTheProperty']:null;
-			
-			$land['l_size']         = $result['propertyArea'];
-			$land['l_price']        = $result['propertyPrice'];
-			$land['l_m_price']      = $result['propertyPrice'];
-			$land['l_currency']     = "SAR";
-			$land['l_rooms']        = $result['numberOfRooms'];
-			
-			$land['l_type']         = $type;
-			$land['l_co_relation'] 	= $fdata['new_relation'];
-			$land['l_co'] 			= session::get('company');
-			$land['l_adv_no']    	= $fdata['new_delegate'];
-			$land['l_desc']    	    = $fdata['new_desc'];
-			
-			$land['l_for']          = ($result['advertisementType'] == "بيغ")?"SALE":"RENT_Y";
-			$land['l_interface']    = array_search($result['propertyFace'],lib::$land_interface);
-			$land['l_expered']      = $exp;
-					    -->
 						<input type="hidden" class="hid_info" name="csrf" value="<?php echo session::get('csrf'); ?>" />
 						<input type="hidden" name="new_relation_type" value='REG' />
 						<input type="hidden" name="new_delegate" :value='api_land.adLicenseNumber' />
