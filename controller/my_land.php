@@ -57,9 +57,18 @@
 		    }
 		    echo json_encode($this->model->new_api_land());
 		}
+
 		function new_land2()
 		{
-			error_log("new_land2() called");
+			// Set the 404 Not Found HTTP header
+			header("HTTP/1.0 404 Not Found");
+
+			// Display a custom message in the response body
+			echo "404 Not Found - The requested resource could not be found.";
+			// Optionally, you can include additional HTML or content here.
+
+			// Terminate the script to prevent further execution
+			exit();
 		}
 		
 		//Update upd_request
