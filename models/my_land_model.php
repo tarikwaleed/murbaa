@@ -1167,52 +1167,52 @@ class my_land_model extends model
 		$files	= new files();
 		$main_img = 'default.png';
 
-		if (!empty($id)) {
-			if (!empty($_FILES['new_land_img'])) {
-				if ($files->check_file($_FILES['new_land_img'])) {
-					$main_img = $files->up_file($_FILES['new_land_img'], URL_PATH . 'public/IMG/land/' . $id);
-					$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
-				}
-				if (!empty($files->error_message)) {
-					return array('Error' => $files->error_message);
-				}
-			} else {
-				$files->copy_file(URL_PATH . 'public/IMG/land/default.png', URL_PATH . 'public/IMG/land/' . $id, 'default.png');
-			}
+		// if (!empty($id)) {
+		// 	if (!empty($_FILES['new_land_img'])) {
+		// 		if ($files->check_file($_FILES['new_land_img'])) {
+		// 			$main_img = $files->up_file($_FILES['new_land_img'], URL_PATH . 'public/IMG/land/' . $id);
+		// 			$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
+		// 		}
+		// 		if (!empty($files->error_message)) {
+		// 			return array('Error' => $files->error_message);
+		// 		}
+		// 	} else {
+		// 		$files->copy_file(URL_PATH . 'public/IMG/land/default.png', URL_PATH . 'public/IMG/land/' . $id, 'default.png');
+		// 	}
 
-			$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
+		// 	$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
 
-			if (!empty($_FILES['new_delegate_file'])) {
-				if ($files->check_file($_FILES['new_delegate_file'])) {
-					$main_img = $files->up_file($_FILES['new_delegate_file'], URL_PATH . 'public/IMG/land/' . $id . '/delegate');
-					$this->db->update(DB_PREFEX . 'land', array("l_delegate_file" => $main_img), "l_id = " . $id);
-				}
-				if (!empty($files->error_message)) {
-					return array('Error' => $files->error_message);
-				}
-			}
+		// 	if (!empty($_FILES['new_delegate_file'])) {
+		// 		if ($files->check_file($_FILES['new_delegate_file'])) {
+		// 			$main_img = $files->up_file($_FILES['new_delegate_file'], URL_PATH . 'public/IMG/land/' . $id . '/delegate');
+		// 			$this->db->update(DB_PREFEX . 'land', array("l_delegate_file" => $main_img), "l_id = " . $id);
+		// 		}
+		// 		if (!empty($files->error_message)) {
+		// 			return array('Error' => $files->error_message);
+		// 		}
+		// 	}
 
-			if (!empty($_FILES['new_file_image']) && count($_FILES['new_file_image']) != 0) {
-				$file_array = $files->reArrayFiles($_FILES['new_file_image']);
+		// 	if (!empty($_FILES['new_file_image']) && count($_FILES['new_file_image']) != 0) {
+		// 		$file_array = $files->reArrayFiles($_FILES['new_file_image']);
 
-				foreach ($file_array as $val) {
-					if ($files->check_file($val)) {
-						$x = $files->up_file($val, URL_PATH . 'public/IMG/land/' . $id);
-					}
-				}
+		// 		foreach ($file_array as $val) {
+		// 			if ($files->check_file($val)) {
+		// 				$x = $files->up_file($val, URL_PATH . 'public/IMG/land/' . $id);
+		// 			}
+		// 		}
 
-				if (!empty($files->error_message)) {
-					return array('Error' => $files->error_message);
-				}
-			}
+		// 		if (!empty($files->error_message)) {
+		// 			return array('Error' => $files->error_message);
+		// 		}
+		// 	}
 
-			//VIP adv
-			if (!empty($fdata['company'])) {
-				foreach ($fdata['company'] as $val) {
-					$this->db->insert(DB_PREFEX . 'land_adv', array('adv_land' => $id, 'adv_co' => $val));
-				}
-			}
-		}
+		// 	//VIP adv
+		// 	if (!empty($fdata['company'])) {
+		// 		foreach ($fdata['company'] as $val) {
+		// 			$this->db->insert(DB_PREFEX . 'land_adv', array('adv_land' => $id, 'adv_co' => $val));
+		// 		}
+		// 	}
+		// }
 
 		return array('id' => $id);
 	}
