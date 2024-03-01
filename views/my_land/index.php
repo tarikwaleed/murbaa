@@ -941,25 +941,25 @@
 								{{api_land.advertiserId}}
 							</div>
 							<div class="col-sm mb-3">
-								<label for="new_no" class="">رقم ترخيص الاعلان</label>
+								<label for="ad-license-number" class="">رقم ترخيص الاعلان</label>
 								{{api_land.adLicenseNumber}}
 							</div>
 							<div class="col-sm mb-3">
-								<label for="new_space" class="">رقم صك الملكية</label>
+								<label for="deed-number" class="">رقم صك الملكية</label>
 								{{api_land.deedNumber}}
 							</div>
 						</div>
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="new_space" class="">أسم المعلن</label>
+								<label for="advertiser-name" class="">أسم المعلن</label>
 								{{api_land.advertiserName}}
 							</div>
 							<div class="col-sm mb-3">
-								<label for="new_space" class="">رقم الهاتف </label>
+								<label for="phone-number" class="">رقم الهاتف </label>
 								{{api_land.phoneNumber}}
 							</div>
 							<div class="col-sm mb-3">
-								<label for="new_space" class="">رقم رخصة الوساطة والتسويق العقاري</label>
+								<label for="brokerage-and-marketing-license-number" class="">رقم رخصة الوساطة والتسويق العقاري</label>
 								{{api_land.brokerageAndMarketingLicenseNumber}}
 							</div>
 						</div>
