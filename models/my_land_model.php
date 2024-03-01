@@ -1050,6 +1050,172 @@ class my_land_model extends model
 	}
 
 
+	public function new_land2()
+	{
+		$form	= new form();
+		$form->post('advertiser-id')->valid('numeric') // رقم هوية المعلن
+			->post('ad-license-number')->valid('numeric') // رقم ترخيص الاعلان
+			->post('deed-number')->valid('numeric') // رقم صك الملكية
+			->post('advertiser-name')->valid('Min_Length', 5) // أسم المعلن
+			->post('phone-number')->valid('numeric') // رقم الهاتف
+			->post('brokerage-and-marketing-license-number')->valid('numeric') // رقم رخصة الوساطة والتسويق العقاري
+			->post('is-constrained')->valid('numeric') // وجود قيد؟
+			->post('is-pawned')->valid('numeric') // وجود رهن؟
+			->post('street-width')->valid('numeric') // عرض الشارع
+			->post('propertyArea')->valid('numeric') // المساحة
+			->post('property-price')->valid('numeric') // سعر العقار
+			->post('number-of-rooms')->valid('numeric') // عدد الغرف
+			->post('property-type')->valid('numeric') // نوع العقار
+			->post('property-age')->valid('numeric') // عمر العقار
+			->post('advertisement-type')->valid('numeric') // نوع الإعلان
+			->post('region')->valid('numeric') // المنطقة
+			->post('region-code')->valid('numeric') // كود المنطقة
+			->post('city')->valid('numeric') // المدينة
+			->post('city-code')->valid('numeric') // كود المدينة
+			->post('district')->valid('numeric') // الحي
+			->post('district-code')->valid('numeric') // كود الحي
+			->post('street')->valid('numeric') // الشارع
+			->post('postal-code')->valid('numeric') // الرمز البريدي
+			->post('building-number')->valid('numeric') // رقم المبنى
+			->post('additional-number')->valid('numeric') // الرقم الإضافي
+			->post('longitude')->valid('numeric') // خط الطول
+			->post('latitude')->valid('numeric') // خط العرض
+			->post('property-face')->valid('numeric') // واجهة العقار
+			->post('plan-number')->valid('numeric') // رقم المخطط
+			->post('obligations-on-the-property')->valid('numeric') // الالتزامات على العقار
+			->post('guarantees-and-their-duration')->valid('numeric') // الضمانات ومدتها
+			->post('the-borders-and-lengths-of-the-property')->valid('numeric') // الحدود والأطوال للعقار
+			->post('compliance-with-the-saudi-building-code')->valid('numeric') // مطابقة كود البناء السعودي
+			->post('property-utilities')->valid('array')
+			->post('channels')->valid('array')
+			->post('property-usages')->valid('array');
+
+		$form->submit();
+
+
+		$fdata	= $form->fetch();
+
+		//check for errors
+		if (!empty($fdata['MSG'])) {
+			return array('Error' => $fdata['MSG'] . ":: " . $_POST['new_for']);
+		}
+
+		$conf = $this->db->select("SELECT conf_name , conf_val, update_at
+									FROM " . DB_PREFEX . "config 
+									WHERE conf_name like 'ADV_DAYS'
+									", array());
+
+		if (count($conf) != 1) {
+			return array('Error' => "خطأ بالاعدادات الرجاء التواصل مع الادارة");
+		}
+
+		$m_time	= dates::convert_to_date('now');
+		$time	= dates::convert_to_string($m_time);
+		$exp	= dates::add_days($m_time, $conf[0]['conf_val']);
+		$exp 	= dates::convert_to_string($exp);
+
+		$pkg 	= array();
+		$land 	= array();
+
+		$land['l_co'] 			= session::get('company');
+		$land['l_adv'] 			= 'ADV';
+		$land['create_at'] 		= $time;
+		$land['create_by'] 		= session::get('user_id');
+		$land['l_expered'] 		= $exp;
+		$land['advertiser-id'] = (!empty($fdata['advertiser-id'])) ? $fdata['advertiser-id'] : null;
+		$land['ad-license-number'] = (!empty($fdata['ad-license-number'])) ? $fdata['ad-license-number'] : null;
+		$land['deed-number'] = (!empty($fdata['deed-number'])) ? $fdata['deed-number'] : null;
+		$land['advertiser-name'] = (!empty($fdata['advertiser-name']) && strlen($fdata['advertiser-name']) >= 5) ? $fdata['advertiser-name'] : null;
+		$land['phone-number'] = (!empty($fdata['phone-number'])) ? $fdata['phone-number'] : null;
+		$land['brokerage-and-marketing-license-number'] = (!empty($fdata['brokerage-and-marketing-license-number'])) ? $fdata['brokerage-and-marketing-license-number'] : null;
+		$land['is-constrained'] = (!empty($fdata['is-constrained'])) ? $fdata['is-constrained'] : null;
+		$land['is-pawned'] = (!empty($fdata['is-pawned'])) ? $fdata['is-pawned'] : null;
+		$land['street-width'] = (!empty($fdata['street-width'])) ? $fdata['street-width'] : null;
+		$land['propertyArea'] = (!empty($fdata['propertyArea'])) ? $fdata['propertyArea'] : null;
+		$land['property-price'] = (!empty($fdata['property-price'])) ? $fdata['property-price'] : null;
+		$land['number-of-rooms'] = (!empty($fdata['number-of-rooms'])) ? $fdata['number-of-rooms'] : null;
+		$land['property-type'] = (!empty($fdata['property-type'])) ? $fdata['property-type'] : null;
+		$land['property-age'] = (!empty($fdata['property-age'])) ? $fdata['property-age'] : null;
+		$land['advertisement-type'] = (!empty($fdata['advertisement-type'])) ? $fdata['advertisement-type'] : null;
+		$land['region'] = (!empty($fdata['region'])) ? $fdata['region'] : null;
+		$land['region-code'] = (!empty($fdata['region-code'])) ? $fdata['region-code'] : null;
+		$land['city'] = (!empty($fdata['city'])) ? $fdata['city'] : null;
+		$land['city-code'] = (!empty($fdata['city-code'])) ? $fdata['city-code'] : null;
+		$land['district'] = (!empty($fdata['district'])) ? $fdata['district'] : null;
+		$land['district-code'] = (!empty($fdata['district-code'])) ? $fdata['district-code'] : null;
+		$land['street'] = (!empty($fdata['street'])) ? $fdata['street'] : null;
+		$land['postal-code'] = (!empty($fdata['postal-code'])) ? $fdata['postal-code'] : null;
+		$land['building-number'] = (!empty($fdata['building-number'])) ? $fdata['building-number'] : null;
+		$land['additional-number'] = (!empty($fdata['additional-number'])) ? $fdata['additional-number'] : null;
+		$land['longitude'] = (!empty($fdata['longitude'])) ? $fdata['longitude'] : null;
+		$land['latitude'] = (!empty($fdata['latitude'])) ? $fdata['latitude'] : null;
+		$land['property-face'] = (!empty($fdata['property-face'])) ? $fdata['property-face'] : null;
+		$land['plan-number'] = (!empty($fdata['plan-number'])) ? $fdata['plan-number'] : null;
+		$land['obligations-on-the-property'] = (!empty($fdata['obligations-on-the-property'])) ? $fdata['obligations-on-the-property'] : null;
+		$land['guarantees-and-their-duration'] = (!empty($fdata['guarantees-and-their-duration'])) ? $fdata['guarantees-and-their-duration'] : null;
+		$land['the-borders-and-lengths-of-the-property'] = (!empty($fdata['the-borders-and-lengths-of-the-property'])) ? $fdata['the-borders-and-lengths-of-the-property'] : null;
+		$land['compliance-with-the-saudi-building-code'] = (!empty($fdata['compliance-with-the-saudi-building-code'])) ? $fdata['compliance-with-the-saudi-building-code'] : null;
+		$land['property-utilities'] = (!empty($fdata['property-utilities']) && is_array($fdata['property-utilities'])) ? $fdata['property-utilities'] : null;
+		$land['channels'] = (!empty($fdata['channels']) && is_array($fdata['channels'])) ? $fdata['channels'] : null;
+		$land['property-usages'] = (!empty($fdata['property-usages']) && is_array($fdata['property-usages'])) ? $fdata['property-usages'] : null;
+
+
+		//insert
+		$this->db->insert(DB_PREFEX . 'land2', $land);
+		$id = $this->db->LastInsertedId();
+
+		$files	= new files();
+		$main_img = 'default.png';
+
+		if (!empty($id)) {
+			if (!empty($_FILES['new_land_img'])) {
+				if ($files->check_file($_FILES['new_land_img'])) {
+					$main_img = $files->up_file($_FILES['new_land_img'], URL_PATH . 'public/IMG/land/' . $id);
+					$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
+				}
+				if (!empty($files->error_message)) {
+					return array('Error' => $files->error_message);
+				}
+			} else {
+				$files->copy_file(URL_PATH . 'public/IMG/land/default.png', URL_PATH . 'public/IMG/land/' . $id, 'default.png');
+			}
+
+			$this->db->update(DB_PREFEX . 'land', array("l_img" => $main_img), "l_id = " . $id);
+
+			if (!empty($_FILES['new_delegate_file'])) {
+				if ($files->check_file($_FILES['new_delegate_file'])) {
+					$main_img = $files->up_file($_FILES['new_delegate_file'], URL_PATH . 'public/IMG/land/' . $id . '/delegate');
+					$this->db->update(DB_PREFEX . 'land', array("l_delegate_file" => $main_img), "l_id = " . $id);
+				}
+				if (!empty($files->error_message)) {
+					return array('Error' => $files->error_message);
+				}
+			}
+
+			if (!empty($_FILES['new_file_image']) && count($_FILES['new_file_image']) != 0) {
+				$file_array = $files->reArrayFiles($_FILES['new_file_image']);
+
+				foreach ($file_array as $val) {
+					if ($files->check_file($val)) {
+						$x = $files->up_file($val, URL_PATH . 'public/IMG/land/' . $id);
+					}
+				}
+
+				if (!empty($files->error_message)) {
+					return array('Error' => $files->error_message);
+				}
+			}
+
+			//VIP adv
+			if (!empty($fdata['company'])) {
+				foreach ($fdata['company'] as $val) {
+					$this->db->insert(DB_PREFEX . 'land_adv', array('adv_land' => $id, 'adv_co' => $val));
+				}
+			}
+		}
+
+		return array('id' => $id);
+	}
 	//create new land ADV
 	public function new_land()
 	{
@@ -1162,7 +1328,7 @@ class my_land_model extends model
 
 
 		//insert
-		$this->db->insert(DB_PREFEX . 'land2', $land);
+		$this->db->insert(DB_PREFEX . 'land', $land);
 		$id = $this->db->LastInsertedId();
 
 		$files	= new files();

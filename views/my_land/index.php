@@ -1125,7 +1125,6 @@
 						</div>
 
 
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
 
 						<div class="row align-items-center">
 							<div class="col-sm mb-3">

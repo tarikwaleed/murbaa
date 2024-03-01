@@ -25,7 +25,7 @@
 	define('DB_HOST','localhost');
 	define('DB_USER','murbaa_real');
 	define('DB_PASS','yfNKZUYSgFP#');
-	define('DB_NAME','murbaa_realstate');
+	define('DB_NAME','murbaa_dev');
 	define('DB_charset','utf8');
 	define('DB_PREFEX','real_');
 	
