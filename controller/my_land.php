@@ -60,9 +60,7 @@
 
 		function new_land2()
 		{
-			// echo json_encode($this->model->new_land2());
-			// return;
-			echo json_encode("HELLO TARIK");
+			echo json_encode($this->model->new_land2());
 			return;
 
 		}
