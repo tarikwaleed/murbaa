@@ -1001,8 +1001,8 @@
 								<input type="text" lang="en" id="property-age" :value="api_land.propertyAge" class="form-control border border-primary rounded" placeholder="عمر العقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="advertisementType" class="">نوع الإعلان</label>
-								<input type="text" lang="en" id="advertisementType" :value="api_land.advertisementType" class="form-control border border-primary rounded" placeholder="نوع الإعلان" readonly />
+								<label for="advertisement-type" class="">نوع الإعلان</label>
+								<input type="text" lang="en" id="advertisement-type" :value="api_land.advertisementType" class="form-control border border-primary rounded" placeholder="نوع الإعلان" readonly />
 							</div>
 						</div>
 						<!-- Label for the location section -->
@@ -1019,8 +1019,8 @@
 								<input type="text" lang="en" id="region" :value="api_land.location.region" class="form-control border border-primary rounded" placeholder="المنطقة" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="regionCode" class="">كود المنطقة</label>
-								<input type="text" lang="en" id="regionCode" :value="api_land.location.regionCode" class="form-control border border-primary rounded" placeholder="كود المنطقة" readonly />
+								<label for="region-code" class="">كود المنطقة</label>
+								<input type="text" lang="en" id="region-code" :value="api_land.location.regionCode" class="form-control border border-primary rounded" placeholder="كود المنطقة" readonly />
 							</div>
 						</div>
 
@@ -1030,8 +1030,8 @@
 								<input type="text" lang="en" id="city" :value="api_land.location.city" class="form-control border border-primary rounded" placeholder="المدينة" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="cityCode" class="">كود المدينة</label>
-								<input type="text" lang="en" id="cityCode" :value="api_land.location.cityCode" class="form-control border border-primary rounded" placeholder="كود المدينة" readonly />
+								<label for="city-code" class="">كود المدينة</label>
+								<input type="text" lang="en" id="city-code" :value="api_land.location.cityCode" class="form-control border border-primary rounded" placeholder="كود المدينة" readonly />
 							</div>
 						</div>
 
@@ -1041,8 +1041,8 @@
 								<input type="text" lang="en" id="district" :value="api_land.location.district" class="form-control border border-primary rounded" placeholder="الحي" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="districtCode" class="">كود الحي</label>
-								<input type="text" lang="en" id="districtCode" :value="api_land.location.districtCode" class="form-control border border-primary rounded" placeholder="كود الحي" readonly />
+								<label for="district-code" class="">كود الحي</label>
+								<input type="text" lang="en" id="district-code" :value="api_land.location.districtCode" class="form-control border border-primary rounded" placeholder="كود الحي" readonly />
 							</div>
 						</div>
 
@@ -1052,19 +1052,19 @@
 								<input type="text" lang="en" id="street" :value="api_land.location.street" class="form-control border border-primary rounded" placeholder="الشارع" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="postalCode" class="">الرمز البريدي</label>
-								<input type="text" lang="en" id="postalCode" :value="api_land.location.postalCode" class="form-control border border-primary rounded" placeholder="الرمز البريدي" readonly />
+								<label for="postal-code" class="">الرمز البريدي</label>
+								<input type="text" lang="en" id="postal-code" :value="api_land.location.postalCode" class="form-control border border-primary rounded" placeholder="الرمز البريدي" readonly />
 							</div>
 						</div>
 
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
-								<label for="buildingNumber" class="">رقم المبنى</label>
-								<input type="text" lang="en" id="buildingNumber" :value="api_land.location.buildingNumber" class="form-control border border-primary rounded" placeholder="رقم المبنى" readonly />
+								<label for="building-number" class="">رقم المبنى</label>
+								<input type="text" lang="en" id="building-number" :value="api_land.location.buildingNumber" class="form-control border border-primary rounded" placeholder="رقم المبنى" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="additionalNumber" class="">الرقم الإضافي</label>
-								<input type="text" lang="en" id="additionalNumber" :value="api_land.location.additionalNumber" class="form-control border border-primary rounded" placeholder="الرقم الإضافي" readonly />
+								<label for="additional-number" class="">الرقم الإضافي</label>
+								<input type="text" lang="en" id="additional-number" :value="api_land.location.additionalNumber" class="form-control border border-primary rounded" placeholder="الرقم الإضافي" readonly />
 							</div>
 						</div>
 
@@ -1081,29 +1081,29 @@
 
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
-								<label for="propertyFace" class="">واجهة العقار</label>
-								<input type="text" lang="en" id="propertyFace" :value="api_land.propertyFace" class="form-control border border-primary rounded" placeholder="واجهة العقار" readonly />
+								<label for="property-face" class="">واجهة العقار</label>
+								<input type="text" lang="en" id="property-face" :value="api_land.propertyFace" class="form-control border border-primary rounded" placeholder="واجهة العقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
-								<label for="planNumber" class="">رقم المخطط</label>
-								<input type="text" lang="en" id="planNumber" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="رقم المخطط" readonly />
-							</div>
-						</div>
-
-						<div class="row mt-2">
-							<div class="col-sm mb-3">
-								<label for="obligationsOnTheProperty" class="">الالتزامات على العقار</label>
-								<input type="text" lang="en" id="obligationsOnTheProperty" :value="api_land.obligationsOnTheProperty" class="form-control border border-primary rounded" placeholder="الالتزامات على العقار" readonly />
-							</div>
-							<div class="col-sm mb-3">
-								<label for="guaranteesAndTheirDuration" class="">الضمانات ومدتها</label>
-								<input type="text" lang="en" id="guaranteesAndTheirDuration" :value="api_land.guaranteesAndTheirDuration" class="form-control border border-primary rounded" placeholder="الضمانات ومدتها" readonly />
+								<label for="plan-number" class="">رقم المخطط</label>
+								<input type="text" lang="en" id="plan-number" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="رقم المخطط" readonly />
 							</div>
 						</div>
 
 						<div class="row mt-2">
 							<div class="col-sm mb-3">
-								<label for="theBordersAndLengthsOfTheProperty" class="">الحدود والأطوال للعقار</label>
+								<label for="obligations-nn-the-property" class="">الالتزامات على العقار</label>
+								<input type="text" lang="en" id="obligations-on-the-property" :value="api_land.obligationsOnTheProperty" class="form-control border border-primary rounded" placeholder="الالتزامات على العقار" readonly />
+							</div>
+							<div class="col-sm mb-3">
+								<label for="guarantees-and-their-duration" class="">الضمانات ومدتها</label>
+								<input type="text" lang="en" id="guarantees-and-their-duration" :value="api_land.guaranteesAndTheirDuration" class="form-control border border-primary rounded" placeholder="الضمانات ومدتها" readonly />
+							</div>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col-sm mb-3">
+								<label for="the-borders-and-lengths-of-the-property" class="">الحدود والأطوال للعقار</label>
 								<input type="text" lang="en" id="theBordersAndLengthsOfTheProperty" :value="api_land.theBordersAndLengthsOfTheProperty" class="form-control border border-primary rounded" placeholder="الحدود والأطوال للعقار" readonly />
 							</div>
 							<div class="col-sm mb-3">
