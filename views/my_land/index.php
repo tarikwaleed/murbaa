@@ -1168,10 +1168,8 @@
 					<div class="form_msg d-none">تم حفظ العقار</div>
 				</div>
 
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
-				</div>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> حفظ العقار</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> الغاء</button>
 		</div>
 		</form>
 	</div>
