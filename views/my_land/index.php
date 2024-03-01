@@ -965,8 +965,8 @@
 						</div>
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="isConstrained">وجود قيد؟</label>
-								<input type="checkbox" id="isConstrained" name="isConstrained" :value="api_land.isConstrained">
+								<label for="is-constrained">وجود قيد؟</label>
+								<input type="checkbox" id="is-constrained" name="is-constrained" :value="api_land.isConstrained">
 							</div>
 							<div class="col-sm mb-3">
 								<label for="isPawned">وجود رهن؟</label>
