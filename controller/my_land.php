@@ -59,7 +59,7 @@
 		}
 		function new_land2()
 		{
-			echo "hello";
+			error_log("new_land2() called");
 		}
 		
 		//Update upd_request
