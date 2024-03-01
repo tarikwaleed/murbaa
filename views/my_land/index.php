@@ -937,7 +937,7 @@
 						<input type="hidden" lang="en" id="new_location" name="new_location" :value="api_land.LOCATION_A" />
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
-								<label for="new_block" class="">رقم هوية المعلن: </label>
+								<label for="advertiser-id" class="">رقم هوية المعلن: </label>
 								{{api_land.advertiserId}}
 							</div>
 							<div class="col-sm mb-3">
@@ -973,38 +973,6 @@
 								<input type="checkbox" id="isPawned" name="isPawned" :value="api_land.isPawned">
 							</div>
 						</div>
-						<!-- <div class="row">
-							<div class="col-sm mb-3">
-								<label for="new_type" class="">العلاقة بالعقار</label>
-								<select name="new_relation" id="new_relation" class="form-control border border-primary rounded" @change="onChangeRelation($event)" >
-									<option v-for="(x,id) in relation" v-bind:value="id" v-bind:data-dele="x.del">{{x.NAME}}</option>
-								</select>
-								<div class="d-none err_notification" id="valid_new_relation">this field required</div>
-							</div>
-							<div class="col-sm mb-3" v-else-if="local_delegate == 'LOCAL'">
-								<label for="new_delegate_file" class="">ملف التفويض</label>
-								<input type="file" name="new_delegate_file" max_size="<?php echo MAX_FILE_SIZE; ?>" class="file-upload form-control-file form-control-sm" id="new_delegate_file" accept="*" />
-								<div class="d-none err_notification" id="valid_new_delegate">this field required</div>
-							</div>
-						</div> -->
-						<!-- <div class="row mt-3">
-							<div class="col-sm mb-3">
-								<label for="new_block" class="">المربع</label>
-								<input type="number" lang="en" name="new_block" id="new_block" :value="api_land.planNumber" class="form-control border border-primary rounded" placeholder="المربع" required />
-								<div class="d-none err_notification" id="valid_new_block">this field required</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="new_no" class="">رقم العقار</label>
-								<input type="number" lang="en" id="new_no" name="new_no" :value="api_land.location.buildingNumber" class="form-control border border-primary rounded" placeholder="رقم العقار" required />
-								<div class="d-none err_notification" id="valid_new_no">this field required</div>
-								<div class="err_notification " id="duplicate_new_no">البيانات المدخلة في هذا الحقل مدخلة من قبل</div>
-							</div>
-							<div class="col-sm mb-3">
-								<label for="new_space" class="">المساحة</label>
-								<input type="number" lang="en" step="any" id="new_space" :value="api_land.propertyArea" name="new_space" class="form-control border border-primary rounded" placeholder="المساحة" required />
-								<div class="d-none err_notification" id="valid_new_space">this field required</div>
-							</div>
-						</div> -->
 						<div class="row mt-3">
 							<div class="col-sm mb-3">
 								<label for="streetWidth" class="">عرض الشارع</label>
