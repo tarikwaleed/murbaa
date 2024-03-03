@@ -313,7 +313,7 @@ $(document).on('submit','.model_form', function (e)
 			}
 		},
 		error:function(response,status,xhr){
-			alert("error "+JSON.stringify(response));
+			alert("nihahahahahaha error "+JSON.stringify(response));
 		},
 		resetForm: false
 	});
